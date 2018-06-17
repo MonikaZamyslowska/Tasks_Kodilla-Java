@@ -18,9 +18,11 @@ public class ShapeCollector {
         return shapeCollectors.get(n);
     }
 
+    public int getFigureQuantity() {
+        return 0;
+    }
+
     public void ShowFigures() {
         // do nothing
     }
-
-
 }

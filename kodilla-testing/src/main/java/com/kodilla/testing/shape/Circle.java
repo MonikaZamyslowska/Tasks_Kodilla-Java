@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Circle implements Shape {
 
-    private String shapeName;
     private double radius;
+    private String shapeName;
 
-    public Circle(String shapeName, double radius) {
-        this.shapeName = shapeName;
+    public Circle(double radius) {
         this.radius = radius;
+        this.shapeName = shapeName;
     }
 
     @Override
@@ -44,6 +44,6 @@ public class Circle implements Shape {
     @Override
     public int hashCode() {
 
-        return Objects.hash(getShapeName(), getRadius());
+        return Objects.hash(getRadius(), getShapeName());
     }
 }
