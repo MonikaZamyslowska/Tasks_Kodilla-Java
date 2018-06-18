@@ -6,23 +6,25 @@ public class Square implements Shape {
     private double side;
     private String shapeName;
 
-    public Square(double side) {
+    public Square(double side, String shapeName) {
         this.side = side;
         this.shapeName = shapeName;
     }
 
     @Override
     public String getShapeName() {
-        return null;
+        return shapeName;
     }
 
     @Override
     public double getField() {
-        return 0;
+        return side * side;
     }
 
     public void setSide(double side) {
-        this.side = side;
+        if (side >= 0) {
+            this.side = side;
+        }
     }
 
     public double getSide() {

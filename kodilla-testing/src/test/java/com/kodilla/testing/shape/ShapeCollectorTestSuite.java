@@ -2,6 +2,9 @@ package com.kodilla.testing.shape;
 
 import org.junit.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShapeCollectorTestSuite {
     private static int testCounter = 0;
 
@@ -25,9 +28,9 @@ public class ShapeCollectorTestSuite {
     public void testAddFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Circle circle = new Circle(21.5);
-        Rectangle rectangle = new Rectangle(21.2, 13.3);
-        Square square = new Square(55.5);
+        Circle circle = new Circle(21.5, "circle");
+        Rectangle rectangle = new Rectangle(21.2, 13.3, "rectangle");
+        Square square = new Square(55.5, "square");
         // When
         shapeCollector.addFigure(circle);
         shapeCollector.addFigure(rectangle);
@@ -40,9 +43,9 @@ public class ShapeCollectorTestSuite {
     public void testRemoveFigure() {
         // Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Circle circle = new Circle(21.5);
-        Rectangle rectangle = new Rectangle(21.2, 13.3);
-        Square square = new Square(55.5);
+        Circle circle = new Circle(21.5, "circle");
+        Rectangle rectangle = new Rectangle(21.2, 13.3, "rectangle");
+        Square square = new Square(55.5, "square");
         shapeCollector.addFigure(circle);
         shapeCollector.addFigure(rectangle);
         shapeCollector.addFigure(square);
@@ -56,14 +59,14 @@ public class ShapeCollectorTestSuite {
     public void testGetFigure() {
         // Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Circle circle = new Circle(21.5);
-        Rectangle rectangle = new Rectangle(21.2, 13.3);
-        Square square = new Square(55.5);
+        Circle circle = new Circle(21.5, "circle");
+        Rectangle rectangle = new Rectangle(21.2, 13.3, "rectangle");
+        Square square = new Square(55.5, "square");
         shapeCollector.addFigure(circle);
         shapeCollector.addFigure(rectangle);
         shapeCollector.addFigure(square);
         // When
-        Shape retrievedFigure = shapeCollector.getFigure(1);
+        Shape retrievedFigure = shapeCollector.getFigure(0);
         // Then
         Assert.assertEquals(retrievedFigure, circle);
     }
@@ -72,15 +75,17 @@ public class ShapeCollectorTestSuite {
     public void testShowFigure() {
         // Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Circle circle = new Circle(21.5);
-        Rectangle rectangle = new Rectangle(21.2, 13.3);
-        Square square = new Square(55.5);
+        Circle circle = new Circle(21.5, "circle");
+        Rectangle rectangle = new Rectangle(21.2, 13.3, "rectangle");
+        Square square = new Square(55.5, "square");
         shapeCollector.addFigure(circle);
         shapeCollector.addFigure(rectangle);
         shapeCollector.addFigure(square);
         // When
-        String retrivedFigure = shapeCollector.getFigure(1).getShapeName();
+        ArrayList<Shape> theShape = shapeCollector.showFigures();
         // Then
-        Assert.assertEquals(retrivedFigure, circle.getShapeName());
+        Assert.assertEquals(theShape.get(0), circle);
+        Assert.assertEquals(theShape.get(1), rectangle);
+        Assert.assertEquals(theShape.get(2), square);
     }
 }

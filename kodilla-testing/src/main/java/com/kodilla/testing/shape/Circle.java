@@ -7,25 +7,25 @@ public class Circle implements Shape {
     private double radius;
     private String shapeName;
 
-    public Circle(double radius) {
+    public Circle(double radius, String shapeName) {
         this.radius = radius;
         this.shapeName = shapeName;
     }
 
     @Override
     public String getShapeName() {
-        //
-        return null;
+        return shapeName;
     }
 
     @Override
     public double getField() {
-        //
-        return 0;
+        return radius * radius * Math.PI;
     }
 
     public void setRadius(double radius) {
-        this.radius = radius;
+        if (radius >= 0) {
+            this.radius = radius;
+        }
     }
 
     public double getRadius() {

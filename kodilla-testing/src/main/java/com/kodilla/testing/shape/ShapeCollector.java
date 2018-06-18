@@ -7,11 +7,11 @@ public class ShapeCollector {
     private ArrayList<Shape> shapeCollectors = new ArrayList<>();
 
     public void addFigure(Shape shape) {
-        // do nothing
+        shapeCollectors.add(shape);
     }
 
-    public boolean removeFigure(Shape shape) {
-        return false;
+    public void removeFigure(Shape shape) {
+        shapeCollectors.remove(shape);
     }
 
     public Shape getFigure(int n) {
@@ -19,10 +19,13 @@ public class ShapeCollector {
     }
 
     public int getFigureQuantity() {
-        return 0;
+        return shapeCollectors.size();
     }
 
-    public void showFigures() {
-        // do nothing
+    public ArrayList<Shape> showFigures() {
+        for (int i = 0; i < shapeCollectors.size(); i++) {
+            System.out.println("Shape #" + i + " " + shapeCollectors.get(i).getShapeName() + ", Area = " + shapeCollectors.get(i).getField());
+        }
+        return shapeCollectors;
     }
 }

@@ -8,7 +8,7 @@ public class Rectangle implements Shape {
     private double width;
     private String shapeName;
 
-    public Rectangle(double lenght, double width) {
+    public Rectangle(double lenght, double width, String shapeName) {
         this.lenght = lenght;
         this.width = width;
         this.shapeName = shapeName;
@@ -16,16 +16,18 @@ public class Rectangle implements Shape {
 
     @Override
     public String getShapeName() {
-        return null;
+        return shapeName;
     }
 
     @Override
     public double getField() {
-        return 0;
+        return lenght * width;
     }
 
     public void setLenght(double lenght) {
-        this.lenght = lenght;
+        if (lenght >= 0) {
+            this.lenght = lenght;
+        }
     }
 
     public double getLenght() {
@@ -33,7 +35,9 @@ public class Rectangle implements Shape {
     }
 
     public void setWidth(double width) {
-        this.width = width;
+        if (width >= 0) {
+            this.width = width;
+        }
     }
 
     public double getWidth() {
