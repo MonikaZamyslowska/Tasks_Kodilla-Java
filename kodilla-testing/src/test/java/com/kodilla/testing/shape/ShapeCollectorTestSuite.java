@@ -63,8 +63,7 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(rectangle);
         shapeCollector.addFigure(square);
         // When
-        Shape retrievedFigure;
-        retrievedFigure = shapeCollector.getFigure(1);
+        Shape retrievedFigure = shapeCollector.getFigure(1);
         // Then
         Assert.assertEquals(retrievedFigure, circle);
     }

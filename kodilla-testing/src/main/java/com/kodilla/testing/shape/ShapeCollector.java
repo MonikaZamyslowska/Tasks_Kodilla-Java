@@ -22,7 +22,7 @@ public class ShapeCollector {
         return 0;
     }
 
-    public void ShowFigures() {
+    public void showFigures() {
         // do nothing
     }
 }
