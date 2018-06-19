@@ -1,4 +1,4 @@
-package com.kodilla.testing.statistics;
+package com.kodilla.testing.forum.statistics;
 
 public class CalculateStatistics {
     private int quantityOfUsers;
@@ -74,7 +74,7 @@ public class CalculateStatistics {
         quantityOfComments = statistics.commentsCount();
         avgPostsPerUser = quantityOfPosts / quantityOfUsers;
         avgCommentsPerUser = quantityOfComments / quantityOfUsers;
-        avgCommentsPerPost = quantityOfPosts / quantityOfComments;
+        avgCommentsPerPost = quantityOfComments / quantityOfPosts;
         }
 
     public String showStatistic() {
