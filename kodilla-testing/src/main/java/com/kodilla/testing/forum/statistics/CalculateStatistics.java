@@ -1,12 +1,17 @@
 package com.kodilla.testing.forum.statistics;
 
 public class CalculateStatistics {
+    Statistics theStatistics;
     private int quantityOfUsers;
     private int quantityOfPosts;
     private int quantityOfComments;
     private double avgPostsPerUser;
     private double avgCommentsPerUser;
     private double avgCommentsPerPost;
+
+    public CalculateStatistics(Statistics theStatistics) {
+        this.theStatistics = theStatistics;
+    }
 
     public int getQuantityOfUsers() {
         return quantityOfUsers;
@@ -72,10 +77,22 @@ public class CalculateStatistics {
         quantityOfUsers = statistics.userNames().size();
         quantityOfPosts = statistics.postsCount();
         quantityOfComments = statistics.commentsCount();
-        avgPostsPerUser = quantityOfPosts / quantityOfUsers;
-        avgCommentsPerUser = quantityOfComments / quantityOfUsers;
-        avgCommentsPerPost = quantityOfComments / quantityOfPosts;
+        if (quantityOfUsers > 0) {
+            avgPostsPerUser = (double) quantityOfPosts / quantityOfUsers;
+        } else {
+            avgPostsPerUser = 0;
         }
+        if (quantityOfUsers > 0) {
+            avgCommentsPerUser = quantityOfComments / (double) quantityOfUsers;
+        } else {
+            avgCommentsPerUser = 0;
+        }
+        if (quantityOfPosts > 0) {
+            avgCommentsPerPost = quantityOfComments / (double) quantityOfPosts;
+        } else {
+            avgCommentsPerPost = 0;
+        }
+    }
 
     public String showStatistic() {
         return "Average number of post per user: " + avgPostsPerUser + ", Average number of comments per post: " +
