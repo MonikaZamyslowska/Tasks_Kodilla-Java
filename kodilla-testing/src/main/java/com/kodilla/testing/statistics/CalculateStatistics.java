@@ -76,4 +76,9 @@ public class CalculateStatistics {
         avgCommentsPerUser = quantityOfComments / quantityOfUsers;
         avgCommentsPerPost = quantityOfPosts / quantityOfComments;
         }
+
+    public String showStatistic() {
+        return "Average number of post per user: " + avgPostsPerUser + ", Average number of comments per post: " +
+                avgCommentsPerPost + ", Average number of comment per user: " + avgCommentsPerUser;
+    }
 }
