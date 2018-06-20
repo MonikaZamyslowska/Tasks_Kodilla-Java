@@ -54,7 +54,7 @@ public class StatisticTest {
         theList.add("Adrian");
 
         when(statisticsMock.userNames()).thenReturn(theList);
-        when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.postsCount()).thenReturn(100);
         when(statisticsMock.commentsCount()).thenReturn(10);
         // When
         calculateStatistics.calculateAdvStatistics(statisticsMock);
@@ -64,7 +64,7 @@ public class StatisticTest {
         //Then
         Assert.assertEquals((double)10/100, commentsPerPost, 0.1);
         Assert.assertEquals(10/5, commentsPerUser, 0.1);
-        Assert.assertEquals(1000/5, postPerUser, 0.1);
+        Assert.assertEquals(100/5, postPerUser, 0.1);
 
     }
     // Test #3
