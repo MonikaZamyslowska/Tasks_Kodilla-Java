@@ -16,4 +16,35 @@ public final class ForumUser {
         this.birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
         this.numberOfPosts = numberOfPosts;
     }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public char getSex() {
+        return sex;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public int getNumberOfPosts() {
+        return numberOfPosts;
+    }
+
+    @Override
+    public String toString() {
+        return "ForumUser{" +
+                "userID=" + userID +
+                ", username='" + username + '\'' +
+                ", sex=" + sex +
+                ", birthDate=" + birthDate +
+                ", numberOfPosts=" + numberOfPosts +
+                '}';
+    }
 }
