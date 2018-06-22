@@ -5,7 +5,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public final class ForumUser {private final String username;
+public final class ForumUser {
+    private final String username;
     private final String realName;
     private final String location;
     private final Set<ForumUser> friends = new HashSet<>();
