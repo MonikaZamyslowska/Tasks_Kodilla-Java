@@ -2,14 +2,16 @@ package com.kodilla.stream.world;
 
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public final class World {
-    private final Set<Continent> continents = new HashSet<>();
+    private final List<Continent> continents;
 
-    public  void addContinent(Continent continent) {
-        continents.add(continent);
+    public World(List<Continent> continents) {
+        this.continents = continents;
     }
 
     public BigDecimal getPeopleQuantity() {
@@ -20,7 +22,7 @@ public final class World {
         return peopleQuantity;
     }
 
-    public Set<Continent> getContinents() {
+    public List<Continent> getContinents() {
         return continents;
     }
 
