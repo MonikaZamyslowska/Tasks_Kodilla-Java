@@ -1,5 +1,6 @@
 package com.kodilla.stream.portfolio;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -67,7 +68,13 @@ public class BoardTestSuite {
         return project;
     }
     @Test
-    public void testAddTaskListFindUsersTasks() {
+    public void testAddTaskList() {
+        //Given
+        Board project = prepareTestData();
 
+        //When
+
+        //Then
+        Assert.assertEquals(3, prepareTestData().getTaskLists().size());
     }
 }
