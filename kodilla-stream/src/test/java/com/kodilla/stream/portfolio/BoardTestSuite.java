@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.time.Period;
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class BoardTestSuite {
     public Board prepareTestData() {
@@ -147,8 +147,8 @@ public class BoardTestSuite {
         double average = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(taskList -> taskList.getTasks().stream())
-                .mapToDouble(task -> Period.between(task.getCreated(), task.getDeadline()).getDays())
-                .average().getAsDouble();
+                .mapToDouble(task -> DAYS.between(task.getCreated(), task.getDeadline()))
+                .average().orElse(0);
 
         //Then
         Assert.assertEquals(3, numberOfTasks.size());
