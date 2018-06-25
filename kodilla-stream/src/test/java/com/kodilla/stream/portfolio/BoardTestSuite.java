@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BoardTestSuite {
     public Board prepareTestData() {
@@ -75,6 +77,22 @@ public class BoardTestSuite {
         //When
 
         //Then
-        Assert.assertEquals(3, prepareTestData().getTaskLists().size());
+        Assert.assertEquals(3, project.getTaskLists().size());
+    }
+
+    @Test
+    public void testAddTaskListFindUsersTasks() {
+        //Given
+        Board project = prepareTestData();
+        //When
+        User user = new User("developer1", "John Smith");
+        List<Task> tasks = project.getTaskLists().stream()
+                .flatMap(n -> n.getTasks().stream())
+                .filter(t -> t.getAssignedUser().equals(user))
+                .collect(Collectors.toList());
+        //Then
+        Assert.assertEquals(2, tasks.size());
+        Assert.assertEquals(user, tasks.get(0).getAssignedUser());
+        Assert.assertEquals(user, tasks.get(1).getAssignedUser());
     }
 }
