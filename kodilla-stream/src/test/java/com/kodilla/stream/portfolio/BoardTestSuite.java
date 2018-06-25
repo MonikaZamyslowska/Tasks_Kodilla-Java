@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.time.Period;
 
 public class BoardTestSuite {
     public Board prepareTestData() {
@@ -130,5 +131,28 @@ public class BoardTestSuite {
                 .count();
         //Then
         Assert.assertEquals(2, longTasks);
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        List<Task> numberOfTasks = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .collect(Collectors.toList());
+        double average = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .mapToDouble(task -> Period.between(task.getCreated(), task.getDeadline()).getDays())
+                .average().getAsDouble();
+
+        //Then
+        Assert.assertEquals(3, numberOfTasks.size());
+        Assert.assertEquals(18.3, average, 0.1);
+
     }
 }
