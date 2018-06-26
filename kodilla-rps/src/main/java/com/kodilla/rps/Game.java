@@ -7,7 +7,9 @@ public class Game {
     private int playerScore;
     private int numberOfGames;
 
-
+    public enum Choice {
+        ROCK, PAPER, SCISSOR, END, RESET
+    }
 
     public Game() {
         Player player = new Player();

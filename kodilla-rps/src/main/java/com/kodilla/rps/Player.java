@@ -16,33 +16,42 @@ public class Player {
 
     public void askNumberOfRounds() {
         //request for the number of rounds
-        System.out.println("Please enter number turns of the game...");
+        System.out.println("Hello " + name + "/n How many rounds would you like to play?");
+        numberOfRounds = scanner.nextInt();
 
     }
 
-    public Driver.Choice playerChoice() {
+    public Game.Choice playerChoice() {
         Character playerChoice;
-        System.out.println("Select: /n ROCK = 1 /n PAPER = 2 /n SCISSOR = 3 /n If you want");
+        System.out.println("Select: /n ROCK = 1 /n PAPER = 2 /n SCISSOR = 3 /n END GAME = y /n RESET GAME = x");
         playerChoice = scanner.next().charAt(0);
         switch (playerChoice) {
-            case '1': return Driver.Choice.ROCK;
-            case '2': return Driver.Choice.PAPER;
-            case '3': return Driver.Choice.SCISSOR;
-            case 'x': return Driver.Choice.END;
-            case 'y': return Driver.Choice.RESET;
+            case '1': return Game.Choice.ROCK;
+            case '2': return Game.Choice.PAPER;
+            case '3': return Game.Choice.SCISSOR;
+            case 'x': return Game.Choice.END;
+            case 'y': return Game.Choice.RESET;
         }
         return playerChoice();
     }
 
     public boolean endGame() {
         //scanner = new Scanner(System.in);
-        System.out.println("Are you sure want to end the game? (y/n)");
+        System.out.println("Are you sure want to end the game? /n YES = y /n NO = n");
         Character end = scanner.next().charAt(0);
         return end == 'y';
     }
 
     public boolean resetGame() {
-        return true;
+        System.out.println("Are you sure want to reset Game, and play once again? /n YES = y /n NO = /n");
+        Character reset = scanner.next().charAt(0);
+        return reset == 'y';
+    }
+
+    public boolean playAgain() {
+        System.out.println("Do you want play again? /n Yes = y /n NO = /n");
+        Character again = scanner.next().charAt(0);
+        return again == 'y';
     }
 
     public String getName() {
