@@ -3,8 +3,8 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class Game {
-    Player player = new Player();
-    Computer computer = new Computer();
+    Player player;
+    Computer computer;
     private int computerScore;
     private int playerScore;
     private int numberOfGames;
@@ -14,6 +14,8 @@ public class Game {
     }
 
     public Game() {
+        Player player = new Player();
+        Computer computer = new Computer();
         playerScore = 0;
         computerScore = 0;
         numberOfGames = 0;
@@ -30,6 +32,9 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Are you sure want to reset Game, and play once again? /n YES = y /n NO = /n");
         Character reset = scanner.next().charAt(0);
+        playerScore = 0;
+        computerScore = 0;
+        numberOfGames = 0;
         return reset == 'y';
     }
 
@@ -40,9 +45,8 @@ public class Game {
         return again == 'y';
     }
 
-    public void display(String name, Choice playerChoice) {
-        name = player.getName();
-        switch (playerChoice) {
+    public void display(String name, Choice who) {
+        switch (who) {
             case ROCK:
                 System.out.println(name + " selected ROCK ");
             case PAPER:
@@ -58,8 +62,6 @@ public class Game {
 
 
     public int compere(Choice choicePlayer, Choice choiceComputer) {
-        choicePlayer = player.playerChoice();
-        choiceComputer = computer.computerChoice();
         if (choicePlayer.equals(choiceComputer)) return 0;
         switch (choicePlayer) {
             case ROCK:
@@ -72,6 +74,34 @@ public class Game {
         return 0;
     }
 
+    public void startGame() {
+        Choice playerChoice = player.playerChoice();
+        display(player.getName(), player.playerChoice());
+
+        Choice computerChoice = computer.computerChoice();
+        display("computer", computer.computerChoice());
+
+        int compareChoice = playerChoice.compareTo(computerChoice);
+        switch (compareChoice) {
+            case -1: // computer wins
+                System.out.println("Sorry you louse :( ");
+                computerScore++;
+                break;
+            case 0:
+                System.out.println("Tie!");
+                break;
+            case 1:
+                System.out.println("You win!!! :)");
+                playerScore++;
+                break;
+        }
+        numberOfGames++;
+        if (playerScore == player.getNumberOfRounds()) {
+            System.out.println();
+            startGame();
+        }
 
 
-}
+
+        }
+    }
