@@ -3,12 +3,11 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class Game {
-    private Player player;
-    private Computer computer;
+    private Player player = new Player();
+    private Computer computer = new Computer();
     private int computerScore;
     private int playerScore;
     private int numberOfGames;
-    Scanner scanner = new Scanner(System.in);
 
     public enum Choice {
         ROCK, PAPER, SCISSOR, END, RESET
@@ -16,8 +15,6 @@ public class Game {
 
 
     public Game() {
-        Player player = new Player();
-        Computer computer = new Computer();
         playerScore = 0;
         computerScore = 0;
         numberOfGames = 0;
@@ -118,23 +115,6 @@ public class Game {
         } else {
             printStats();
         }
-    }
-//    public void getName() {
-//        player.askName();
-//    }
-
-    public String askName() {
-        //request for the player`s name
-        System.out.println("Please enter your name...");
-        String name = scanner.next();
-        return name;
-    }
-
-    public int askNumberOfRounds() {
-        //request for the number of rounds
-        System.out.println("Hello " + player.getName() + "/n How many rounds would you like to play?");
-         int number = scanner.nextInt();
-         return number;
     }
 
     public void printStats() {

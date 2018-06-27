@@ -9,22 +9,23 @@ public class Player {
     Scanner scanner = new Scanner(System.in);
 
     public Player() {
-        name = game.askName();
-        numberOfRounds = game.askNumberOfRounds();
+        name = askName();
+        numberOfRounds = askNumberOfRounds();
     }
 
-//    public void askName() {
-//        //request for the player`s name
-//        System.out.println("Please enter your name...");
-//        name = scanner.next();
-//    }
-//
-//    public void askNumberOfRounds() {
-//        //request for the number of rounds
-//        System.out.println("Hello " + name + "/n How many rounds would you like to play?");
-//        numberOfRounds = scanner.nextInt();
-//
-//    }
+    public String askName() {
+        //request for the player`s name
+        System.out.println("Please enter your name...");
+        String name = scanner.next();
+        return name;
+    }
+
+    public int askNumberOfRounds() {
+        //request for the number of rounds
+        System.out.println("Hello " + getName() + "/n How many rounds would you like to play?");
+        int number = scanner.nextInt();
+        return number;
+    }
 
     public Game.Choice playerChoice() {
         char playerChoice;
