@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Game {
     Player player;
     Computer computer;
+    Driver driver;
     private int computerScore;
     private int playerScore;
     private int numberOfGames;
@@ -12,6 +13,7 @@ public class Game {
     public enum Choice {
         ROCK, PAPER, SCISSOR, END, RESET
     }
+
 
     public Game() {
         Player player = new Player();
@@ -24,8 +26,9 @@ public class Game {
     public boolean endGame() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Are you sure want to end the game? /n YES = y /n NO = n");
-        Character end = scanner.next().charAt(0);
-        return end == 'y';
+        Character theEnd = scanner.next().charAt(0);
+        new Game();
+        return theEnd == 'y';
     }
 
     public boolean resetGame() {
@@ -45,43 +48,15 @@ public class Game {
         return again == 'y';
     }
 
-    public void display(String name, Choice who) {
-        switch (who) {
-            case ROCK:
-                System.out.println(name + " selected ROCK ");
-            case PAPER:
-                System.out.println(name + " selected Paper ");
-            case SCISSOR:
-                System.out.println(name + " selected Scissor");
-            case RESET:
-                resetGame();
-            case END:
-                endGame();
-            }
-        }
-
-
-    public int compere(Choice choicePlayer, Choice choiceComputer) {
-        if (choicePlayer.equals(choiceComputer)) return 0;
-        switch (choicePlayer) {
-            case ROCK:
-                return (choiceComputer == Choice.SCISSOR ? 1 : -1);
-            case PAPER:
-                return (choiceComputer == Choice.ROCK ? 1 : -1);
-            case SCISSOR:
-                return (choiceComputer == Choice.PAPER ? 1 : -1);
-        }
-        return 0;
-    }
 
     public void startGame() {
         Choice playerChoice = player.playerChoice();
-        display(player.getName(), player.playerChoice());
+        driver.display(player.getName(), playerChoice);
 
         Choice computerChoice = computer.computerChoice();
-        display("computer", computer.computerChoice());
+        driver.display("computer", computerChoice);
 
-        int compareChoice = playerChoice.compareTo(computerChoice);
+        int compareChoice = driver.compere(playerChoice, computerChoice);
         switch (compareChoice) {
             case -1: // computer wins
                 System.out.println("Sorry you louse :( ");
@@ -97,11 +72,34 @@ public class Game {
         }
         numberOfGames++;
         if (playerScore == player.getNumberOfRounds()) {
+            System.out.println("The " + player.getName() + " WON!!!");
+            new Game();
+        }
+        if (computerScore == player.getNumberOfRounds()) {
+            System.out.println("Computer WON, try again...");
+            new Game();
+        }
+        // Ask the player to play again
+        if(playAgain()) {
             System.out.println();
             startGame();
-        }
-
-
-
+        } else {
+            printStats();
         }
     }
+
+    public void getName() {
+        player.askName();
+    }
+
+    public void getNumbers() {
+        player.getNumberOfRounds();
+    }
+
+    public void printStats() {
+        System.out.println("Player score: " + playerScore);
+        System.out.println("Computer score: " + computerScore);
+        System.out.println("Number of rounds: " + numberOfGames);
+    }
+
+}
