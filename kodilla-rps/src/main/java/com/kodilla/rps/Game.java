@@ -3,12 +3,12 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class Game {
-    Player player;
-    Computer computer;
-    Driver driver;
+    private Player player;
+    private Computer computer;
     private int computerScore;
     private int playerScore;
     private int numberOfGames;
+    Scanner scanner = new Scanner(System.in);
 
     public enum Choice {
         ROCK, PAPER, SCISSOR, END, RESET
@@ -48,15 +48,47 @@ public class Game {
         return again == 'y';
     }
 
+    public  void display(String name, Choice what) {
+        switch (what) {
+            case ROCK:
+                System.out.println(name + " selected ROCK ");
+                break;
+            case PAPER:
+                System.out.println(name + " selected Paper ");
+                break;
+            case SCISSOR:
+                System.out.println(name + " selected Scissor");
+                break;
+            case RESET:
+                resetGame();
+                break;
+            case END:
+                endGame();
+        }
+    }
+
+    public  int compere(Choice choicePlayer, Choice choiceComputer) {
+        if (choicePlayer.equals(choiceComputer)) return 0;
+        switch (choicePlayer) {
+            case ROCK:
+                return (choiceComputer == Choice.SCISSOR ? 1 : -1);
+            case PAPER:
+                return (choiceComputer == Choice.ROCK ? 1 : -1);
+            case SCISSOR:
+                return (choiceComputer == Choice.PAPER ? 1 : -1);
+        }
+        return 0;
+    }
+
 
     public void startGame() {
         Choice playerChoice = player.playerChoice();
-        driver.display(player.getName(), playerChoice);
+        display(player.getName(), playerChoice);
 
         Choice computerChoice = computer.computerChoice();
-        driver.display("computer", computerChoice);
+        display("computer", computerChoice);
 
-        int compareChoice = driver.compere(playerChoice, computerChoice);
+        int compareChoice = compere(playerChoice, computerChoice);
         switch (compareChoice) {
             case -1: // computer wins
                 System.out.println("Sorry you louse :( ");
@@ -87,13 +119,22 @@ public class Game {
             printStats();
         }
     }
+//    public void getName() {
+//        player.askName();
+//    }
 
-    public void getName() {
-        player.askName();
+    public String askName() {
+        //request for the player`s name
+        System.out.println("Please enter your name...");
+        String name = scanner.next();
+        return name;
     }
 
-    public void getNumbers() {
-        player.getNumberOfRounds();
+    public int askNumberOfRounds() {
+        //request for the number of rounds
+        System.out.println("Hello " + player.getName() + "/n How many rounds would you like to play?");
+         int number = scanner.nextInt();
+         return number;
     }
 
     public void printStats() {

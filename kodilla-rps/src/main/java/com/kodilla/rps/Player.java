@@ -3,22 +3,28 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class Player {
+    private Game game;
     private String name;
     private int numberOfRounds;
     Scanner scanner = new Scanner(System.in);
 
-    public void askName() {
-        //request for the player`s name
-        System.out.println("Please enter your name...");
-        name = scanner.next();
+    public Player() {
+        name = game.askName();
+        numberOfRounds = game.askNumberOfRounds();
     }
 
-    public void askNumberOfRounds() {
-        //request for the number of rounds
-        System.out.println("Hello " + name + "How many rounds would you like to play?");
-        numberOfRounds = scanner.nextInt();
-
-    }
+//    public void askName() {
+//        //request for the player`s name
+//        System.out.println("Please enter your name...");
+//        name = scanner.next();
+//    }
+//
+//    public void askNumberOfRounds() {
+//        //request for the number of rounds
+//        System.out.println("Hello " + name + "/n How many rounds would you like to play?");
+//        numberOfRounds = scanner.nextInt();
+//
+//    }
 
     public Game.Choice playerChoice() {
         char playerChoice;
@@ -26,19 +32,19 @@ public class Player {
         playerChoice = scanner.next().charAt(0);
         if (playerChoice == '1' || playerChoice == '2' || playerChoice == '3' || playerChoice == '3' ||
                 playerChoice == 'x' || playerChoice == 'n') {
-        switch (playerChoice) {
-            case '1':
-                return Game.Choice.ROCK;
-            case '2':
-                return Game.Choice.PAPER;
-            case '3':
-                return Game.Choice.SCISSOR;
-            case 'x':
-                return Game.Choice.END;
-            case 'n':
-                return Game.Choice.RESET;
+            switch (playerChoice) {
+                case '1':
+                    return Game.Choice.ROCK;
+                case '2':
+                    return Game.Choice.PAPER;
+                case '3':
+                    return Game.Choice.SCISSOR;
+                case 'x':
+                    return Game.Choice.END;
+                case 'n':
+                    return Game.Choice.RESET;
+            }
         }
-    }
         return playerChoice();
     }
 
