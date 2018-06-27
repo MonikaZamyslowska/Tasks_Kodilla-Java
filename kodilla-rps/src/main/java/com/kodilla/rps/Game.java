@@ -26,7 +26,7 @@ public class Game {
             end = false;
             if (theEnd == 'y') {
                 end = true;
-                new Game();
+                System.exit(1);
             }
             if (theEnd == 'n') {
                 startGame();
@@ -50,6 +50,10 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want play again? \n Yes = y \n NO = n");
         Character again = scanner.next().charAt(0);
+        if (again == 'n') {
+            endGame();
+            System.exit(1);
+        }
         playerScore = 0;
         computerScore = 0;
         numberOfGames = 0;
