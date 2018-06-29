@@ -3,33 +3,23 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class Game {
-    private int computerScore;
-    private int playerScore;
-    private int numberOfGames;
-    private boolean end;
+    private int computerScore = 0;
+    private int playerScore = 0;
+    private int numberOfGames = 0;
+    private boolean end = false;
 
     public enum Choice {
-        ROCK, PAPER, SCISSOR, END, RESET
+        INVALID, START, ROCK, PAPER, SCISSOR, END, RESET
     }
 
 
-    public Game() {
-        playerScore = 0;
-        computerScore = 0;
-        numberOfGames = 0;
-    }
 
     public boolean endGame() {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Are you sure want to end the game? \n YES = y \n NO = n");
             Character theEnd = scanner.next().charAt(0);
-            end = false;
             if (theEnd == 'y') {
                 end = true;
-                System.exit(1);
-            }
-            if (theEnd == 'n') {
-                startGame();
             }
         return end;
     }
@@ -52,7 +42,6 @@ public class Game {
         Character again = scanner.next().charAt(0);
         if (again == 'n') {
             endGame();
-            System.exit(1);
         }
         playerScore = 0;
         computerScore = 0;
@@ -61,25 +50,31 @@ public class Game {
     }
 
     public  void display(String name, Choice what) {
+        if (what != Choice.INVALID) {
         switch (what) {
             case ROCK:
-                System.out.println(name + " selected ROCK ");
+                System.out.println(name.toUpperCase() + " selected ROCK");
                 break;
             case PAPER:
-                System.out.println(name + " selected Paper ");
+                System.out.println(name.toUpperCase() + " selected PAPER");
                 break;
             case SCISSOR:
-                System.out.println(name + " selected Scissor");
-                break;
-            case RESET:
-                resetGame();
+                System.out.println(name + " selected SCISSOR");
+            }
+        }
+    }
+
+    public void process(Choice what) {
+
+        switch (what) {
+            case START:
                 break;
             case END:
                 endGame();
-            default:
-                System.out.println("Error! Please once again");
-                startGame();
-        }
+                break;
+            case RESET:
+                resetGame();
+            }
     }
 
     public  int compere(Choice choicePlayer, Choice choiceComputer) {
@@ -91,7 +86,6 @@ public class Game {
                 return (choiceComputer == Choice.ROCK ? 1 : -1);
             case SCISSOR:
                 return (choiceComputer == Choice.PAPER ? 1 : -1);
-
         }
         return 0;
     }
@@ -101,34 +95,42 @@ public class Game {
         Player player = new Player();
         Computer computer = new Computer();
         while(!end ) {
-            Choice playerChoice = player.playerChoice();
-            display(player.getName(), playerChoice);
+            Choice playerProcessChoice = player.playerProcessChoice();
+            if (playerProcessChoice != Choice.INVALID) {
+                process(playerProcessChoice);
 
-            Choice computerChoice = computer.computerChoice();
-            display("computer", computerChoice);
+                if (playerProcessChoice != Choice.END || !end) {
 
-            int compareChoice = compere(playerChoice, computerChoice);
-            switch (compareChoice) {
-                case -1: // computer wins
-                    System.out.println("Sorry you louse :( ");
-                    computerScore++;
-                    break;
-                case 0:
-                    System.out.println("Tie!");
-                    break;
-                case 1:
-                    System.out.println("You win!!! :)");
-                    playerScore++;
-                    break;
-            }
-            if (numberOfGames < player.getNumberOfRounds() - 1) {
-                numberOfGames++;
-            } else {
-                printStats();
-                if(playAgain()) {
-                    System.out.println();
-                    new Game();
-                    startGame();
+                    Choice playerChoice = player.playerChoice();
+                    if (playerChoice != Choice.INVALID) {
+                        display(player.getName(), playerChoice);
+                        Choice computerChoice = computer.computerChoice();
+                        display("COMPUTER", computerChoice);
+
+                        int compareChoice = compere(playerChoice, computerChoice);
+                        switch (compareChoice) {
+                            case -1: // computer wins
+                                System.out.println("Sorry you louse :( \n");
+                                computerScore++;
+                                break;
+                            case 0:
+                                System.out.println("Tie! \n");
+                                break;
+                            case 1:
+                                System.out.println("You win!!! :)\n");
+                                playerScore++;
+                                break;
+                        }
+                        if (numberOfGames < player.getNumberOfRounds() - 1) {
+                            numberOfGames++;
+                        } else {
+                            printStats();
+                            if (playAgain()) {
+                                System.out.println();
+                                new Game();
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -140,13 +142,13 @@ public class Game {
         System.out.println("Computer score: " + computerScore);
         System.out.println("Number of rounds: " + numberOfGames);
         if (playerScore > computerScore) {
-            System.out.println("You WIN!");
+            System.out.println("You WIN!\n");
         }
         if (computerScore > playerScore) {
-            System.out.println("Computer WON!");
+            System.out.println("Computer WON!\n");
         }
         if (playerScore == computerScore) {
-            System.out.println("TIE!");
+            System.out.println("TIE! \n");
         }
     }
 

@@ -21,17 +21,16 @@ public class Player {
 
     public int askNumberOfRounds() {
         //request for the number of rounds
-        System.out.println("Hello " + getName() + " :), How many rounds would you like to play?");
+        System.out.println("Hello " + getName().toUpperCase() + " :), How many rounds would you like to play?");
         int number = scanner.nextInt();
         return number;
     }
 
     public Game.Choice playerChoice() {
         char playerChoice;
-        System.out.println("Select: \n ROCK = 1 \n PAPER = 2 \n SCISSOR = 3 \n END GAME = x \n RESET GAME = n");
+        System.out.println("Select: \nROCK = 1 \nPAPER = 2 \nSCISSOR = 3");
         playerChoice = scanner.next().charAt(0);
-        if (playerChoice == '1' || playerChoice == '2' || playerChoice == '3' || playerChoice == '3' ||
-                playerChoice == 'x' || playerChoice == 'n') {
+
             switch (playerChoice) {
                 case '1':
                     return Game.Choice.ROCK;
@@ -39,16 +38,26 @@ public class Player {
                     return Game.Choice.PAPER;
                 case '3':
                     return Game.Choice.SCISSOR;
-                case 'x':
-                    return Game.Choice.END;
-                case 'n':
-                    return Game.Choice.RESET;
                 default:
-                        System.out.println("Error! Please once again");
-                        playerChoice();
+                    return Game.Choice.INVALID;
             }
+    }
+
+    public Game.Choice playerProcessChoice() {
+        char playerChoice;
+        System.out.println("START = 'a' \nEND GAME = 'x' \nRESET GAME = 'n'");
+        playerChoice = scanner.next().charAt(0);
+
+        switch (playerChoice) {
+            case 'a':
+                return Game.Choice.START;
+            case 'x':
+                return Game.Choice.END;
+            case 'n':
+                return Game.Choice.RESET;
+            default:
+                return Game.Choice.INVALID;
         }
-        return playerChoice();
     }
 
 
