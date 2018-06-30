@@ -15,12 +15,15 @@ public class Game {
 
 
     public boolean endGame() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Are you sure want to end the game? \n YES = y \n NO = n");
-            Character theEnd = scanner.next().charAt(0);
-            if (theEnd == 'y') {
-                end = true;
-            }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Are you sure want to end the game? \n YES = y \n NO = n");
+        Character theEnd = scanner.next().charAt(0);
+        if (theEnd == 'y') {
+            end = true;
+        }
+        if (theEnd == 'n') {
+            playAgain();
+        }
         return end;
     }
 
@@ -28,6 +31,9 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Are you sure want to reset Game, and play once again? \n YES = y \n NO = n");
         Character reset = scanner.next().charAt(0);
+        if (reset != 'y' && reset != 'n') {
+            playAgain();
+        }
         playerScore = 0;
         computerScore = 0;
         numberOfGames = 0;
@@ -43,23 +49,28 @@ public class Game {
         if (again == 'n') {
             endGame();
         }
-        playerScore = 0;
-        computerScore = 0;
-        numberOfGames = 0;
+        if (again == 'y') {
+            playerScore = 0;
+            computerScore = 0;
+            numberOfGames = 0;
+            new Game();
+            startGame();
+
+        }
         return again == 'y';
     }
 
     public  void display(String name, Choice what) {
         if (what != Choice.INVALID) {
-        switch (what) {
-            case ROCK:
-                System.out.println(name.toUpperCase() + " selected ROCK");
-                break;
-            case PAPER:
-                System.out.println(name.toUpperCase() + " selected PAPER");
-                break;
-            case SCISSOR:
-                System.out.println(name + " selected SCISSOR");
+            switch (what) {
+                case ROCK:
+                    System.out.println(name.toUpperCase() + " selected ROCK");
+                    break;
+                case PAPER:
+                    System.out.println(name.toUpperCase() + " selected PAPER");
+                    break;
+                case SCISSOR:
+                    System.out.println(name + " selected SCISSOR");
             }
         }
     }
@@ -74,7 +85,7 @@ public class Game {
                 break;
             case RESET:
                 resetGame();
-            }
+        }
     }
 
     public  int compere(Choice choicePlayer, Choice choiceComputer) {
@@ -95,42 +106,43 @@ public class Game {
         Player player = new Player();
         Computer computer = new Computer();
         while(!end ) {
-            Choice playerProcessChoice = player.playerProcessChoice();
-            if (playerProcessChoice != Choice.INVALID) {
-                process(playerProcessChoice);
+            Choice playerChoice = player.playerChoice();
+            if (playerChoice != Choice.INVALID) {
+                display(player.getName(), playerChoice);
+                Choice computerChoice = computer.computerChoice();
+                display("COMPUTER", computerChoice);
+                int compareChoice = compere(playerChoice, computerChoice);
+                switch (compareChoice) {
+                    case -1: // computer wins
+                        System.out.println("Sorry you louse :( \n");
+                        computerScore++;
+                        break;
+                    case 0:
+                        System.out.println("Tie! \n");
+                        break;
+                    case 1:
+                        System.out.println("You win!!! :)\n");
+                        playerScore++;
+                        break;
+                }
 
-                if (playerProcessChoice != Choice.END || !end) {
-
-                    Choice playerChoice = player.playerChoice();
-                    if (playerChoice != Choice.INVALID) {
-                        display(player.getName(), playerChoice);
-                        Choice computerChoice = computer.computerChoice();
-                        display("COMPUTER", computerChoice);
-
-                        int compareChoice = compere(playerChoice, computerChoice);
-                        switch (compareChoice) {
-                            case -1: // computer wins
-                                System.out.println("Sorry you louse :( \n");
-                                computerScore++;
-                                break;
-                            case 0:
-                                System.out.println("Tie! \n");
-                                break;
-                            case 1:
-                                System.out.println("You win!!! :)\n");
-                                playerScore++;
-                                break;
-                        }
-                        if (numberOfGames < player.getNumberOfRounds() - 1) {
-                            numberOfGames++;
-                        } else {
-                            printStats();
-                            if (playAgain()) {
-                                System.out.println();
-                                new Game();
-                            }
-                        }
+                if (numberOfGames < player.getNumberOfRounds() - 1) {
+                    numberOfGames++;
+                    Choice playerProcessChoice = player.playerProcessChoice();
+                    if (playerProcessChoice != Choice.INVALID) {
+                        process(playerProcessChoice);
+                    } else {
+                        player.playerProcessChoice();
                     }
+                } else {
+                    printStats();
+                    if (playAgain()) {
+                        System.out.println();
+                        new Game();
+                    } else {
+                        playAgain();
+                    }
+
                 }
             }
         }
