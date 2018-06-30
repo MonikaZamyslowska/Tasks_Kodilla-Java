@@ -55,7 +55,6 @@ public class Game {
             numberOfGames = 0;
             new Game();
             startGame();
-
         }
         return again == 'y';
     }
