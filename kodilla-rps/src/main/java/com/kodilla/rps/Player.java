@@ -31,16 +31,16 @@ public class Player {
         System.out.println("Select: \nROCK = 1 \nPAPER = 2 \nSCISSOR = 3");
         playerChoice = scanner.next().charAt(0);
 
-            switch (playerChoice) {
-                case '1':
-                    return Game.Choice.ROCK;
-                case '2':
-                    return Game.Choice.PAPER;
-                case '3':
-                    return Game.Choice.SCISSOR;
-                default:
-                    return Game.Choice.INVALID;
-            }
+        switch (playerChoice) {
+            case '1':
+                return Game.Choice.ROCK;
+            case '2':
+                return Game.Choice.PAPER;
+            case '3':
+                return Game.Choice.SCISSOR;
+            default:
+                return Game.Choice.INVALID;
+        }
     }
 
     public Game.Choice playerProcessChoice() {
