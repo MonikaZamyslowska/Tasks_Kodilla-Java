@@ -10,7 +10,7 @@ public class FlightExceptionRunner {
         try {
             Map<String, Boolean> flyMap = flightSearch.findFlight(flight);
         } catch (RouteNotFoundException e) {
-            System.out.println("Please choose another flight, the final airport was not found");
+            System.out.println("Please choose another flight, the airport was not found");
         }
     }
 }
