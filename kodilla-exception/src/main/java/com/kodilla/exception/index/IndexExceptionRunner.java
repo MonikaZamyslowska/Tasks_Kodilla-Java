@@ -13,7 +13,6 @@ public class IndexExceptionRunner {
 
             String anotherMovie = collection.get(2);
             System.out.println(anotherMovie);
-
         }
     }
 }
