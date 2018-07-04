@@ -13,14 +13,12 @@ public class Player {
     }
 
     public String askName() {
-        //request for the player`s name
         System.out.println("Please enter your name...");
         String name = scanner.next();
         return name;
     }
 
     public int askNumberOfRounds() {
-        //request for the number of rounds
         System.out.println("Hello " + getName().toUpperCase() + " :), How many rounds would you like to play?");
         int number = scanner.nextInt();
         return number;

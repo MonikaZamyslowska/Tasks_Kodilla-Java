@@ -3,6 +3,9 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class Game {
+    private static String SELECT = " selected ";
+    private static char YES = 'y';
+    private static char NO = 'n';
     private int computerScore = 0;
     private int playerScore = 0;
     private int numberOfGames = 0;
@@ -12,16 +15,14 @@ public class Game {
         INVALID, START, ROCK, PAPER, SCISSOR, END, RESET
     }
 
-
-
     public boolean endGame() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Are you sure want to end the game? \n YES = y \n NO = n");
         Character theEnd = scanner.next().charAt(0);
-        if (theEnd == 'y') {
+        if (theEnd == YES) {
             end = true;
         }
-        if (theEnd == 'n') {
+        if (theEnd == NO) {
             playAgain();
         }
         return end;
@@ -31,45 +32,44 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Are you sure want to reset Game, and play once again? \n YES = y \n NO = n");
         Character reset = scanner.next().charAt(0);
-        if (reset != 'y' && reset != 'n') {
+        if (reset != YES && reset != NO) {
             playAgain();
         }
         playerScore = 0;
         computerScore = 0;
         numberOfGames = 0;
-        System.out.println("Setting are reset...");
-        startGame();
-        return reset == 'y';
+        System.out.println("Setting are reset...\n");
+        return reset == YES;
     }
 
     public boolean playAgain() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want play again? \n Yes = y \n NO = n");
         Character again = scanner.next().charAt(0);
-        if (again == 'n') {
+        if (again == NO) {
             endGame();
         }
-        if (again == 'y') {
+        if (again == YES) {
             playerScore = 0;
             computerScore = 0;
             numberOfGames = 0;
             new Game();
             startGame();
         }
-        return again == 'y';
+        return again == YES;
     }
 
     public  void display(String name, Choice what) {
         if (what != Choice.INVALID) {
             switch (what) {
                 case ROCK:
-                    System.out.println(name.toUpperCase() + " selected ROCK");
+                    System.out.println(name.toUpperCase() + SELECT + what);
                     break;
                 case PAPER:
-                    System.out.println(name.toUpperCase() + " selected PAPER");
+                    System.out.println(name.toUpperCase() + SELECT + what);
                     break;
                 case SCISSOR:
-                    System.out.println(name + " selected SCISSOR");
+                    System.out.println(name.toUpperCase() + SELECT + what);
             }
         }
     }
@@ -123,8 +123,7 @@ public class Game {
                         System.out.println("You win!!! :)\n");
                         playerScore++;
                         break;
-                }
-
+                    }
                 if (numberOfGames < player.getNumberOfRounds() - 1) {
                     numberOfGames++;
                     Choice playerProcessChoice = player.playerProcessChoice();
@@ -141,7 +140,6 @@ public class Game {
                     } else {
                         playAgain();
                     }
-
                 }
             }
         }

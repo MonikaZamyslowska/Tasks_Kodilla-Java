@@ -19,5 +19,4 @@ public class FlightSearch {
         flights.put(flight.getArrivalAirport(), flightPermission);
         return flights;
     }
-
 }
