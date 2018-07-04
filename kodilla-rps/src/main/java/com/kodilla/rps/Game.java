@@ -19,11 +19,12 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Are you sure want to end the game? \n YES = y \n NO = n");
         Character theEnd = scanner.next().charAt(0);
-        if (theEnd == YES) {
-            end = true;
-        }
         if (theEnd == NO) {
             playAgain();
+            end = false;
+        }
+        if (theEnd == YES) {
+            end = true;
         }
         return end;
     }
@@ -46,9 +47,6 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want play again? \n Yes = y \n NO = n");
         Character again = scanner.next().charAt(0);
-        if (again == NO) {
-            endGame();
-        }
         if (again == YES) {
             playerScore = 0;
             computerScore = 0;
@@ -124,7 +122,7 @@ public class Game {
                         playerScore++;
                         break;
                     }
-                if (numberOfGames < player.getNumberOfRounds() - 1) {
+                while (numberOfGames < player.getNumberOfRounds() - 1) {
                     numberOfGames++;
                     Choice playerProcessChoice = player.playerProcessChoice();
                     if (playerProcessChoice != Choice.INVALID) {
@@ -132,14 +130,12 @@ public class Game {
                     } else {
                         player.playerProcessChoice();
                     }
+                }
+                if (playAgain()) {
+                    System.out.println();
                 } else {
                     printStats();
-                    if (playAgain()) {
-                        System.out.println();
-                        new Game();
-                    } else {
-                        playAgain();
-                    }
+                    endGame();
                 }
             }
         }
