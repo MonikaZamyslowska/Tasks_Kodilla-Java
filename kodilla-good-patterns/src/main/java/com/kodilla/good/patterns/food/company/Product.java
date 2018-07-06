@@ -5,10 +5,12 @@ import java.util.Objects;
 public class Product {
     private String tag;
     private String productName;
+    private double quantity;
 
-    public Product(String tag, String productName) {
+    public Product(String tag, String productName, double quantity) {
         this.tag = tag;
         this.productName = productName;
+        this.quantity = quantity;
     }
 
     public String getTag() {
