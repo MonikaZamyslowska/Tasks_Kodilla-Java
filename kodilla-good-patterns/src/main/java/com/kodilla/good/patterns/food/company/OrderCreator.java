@@ -9,6 +9,8 @@ import java.util.List;
 public class OrderCreator {
 
     public Order createOrder() {
+        String providerName = "ExtraFoodShop";
+
         LocalDateTime dateOrder = LocalDateTime.of(2018, 07, 06, 11, 32);
 
         Customer customer = new Customer("Lukas", "Goodman", "London SW1P 4DF, 238 King Street",
@@ -19,6 +21,6 @@ public class OrderCreator {
         productList.add(new Product("ljwe6", "Plum", 1));
         productList.add(new Product("lj78c", "Apple", 3.5));
 
-        return new Order(dateOrder, customer, productList);
+        return new Order(providerName, dateOrder, customer, productList);
     }
 }
