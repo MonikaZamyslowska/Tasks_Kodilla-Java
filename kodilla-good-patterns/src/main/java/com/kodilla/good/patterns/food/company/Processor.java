@@ -21,6 +21,5 @@ public class Processor {
         } else {
             return new OrderDTO(order.getCustomer(), order.getProductList(), false);
         }
-
     }
 }

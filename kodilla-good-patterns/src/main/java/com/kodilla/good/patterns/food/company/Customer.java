@@ -38,21 +38,4 @@ public class Customer {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Customer)) return false;
-        Customer customer = (Customer) o;
-        return getTelNumber() == customer.getTelNumber() &&
-                Objects.equals(getName(), customer.getName()) &&
-                Objects.equals(getLastName(), customer.getLastName()) &&
-                Objects.equals(getAddress(), customer.getAddress());
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(getName(), getLastName(), getAddress(), getTelNumber());
-    }
 }
