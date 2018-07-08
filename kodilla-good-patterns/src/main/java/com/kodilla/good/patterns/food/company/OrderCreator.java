@@ -1,7 +1,5 @@
 package com.kodilla.good.patterns.food.company;
 
-import com.kodilla.good.patterns.challenges.User;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +7,8 @@ import java.util.List;
 public class OrderCreator {
 
     public Order createOrder() {
-        String providerName = "ExtraFoodShop";
-
         LocalDateTime dateOrder = LocalDateTime.of(2018, 07, 06, 11, 32);
+        LocalDateTime maxSentDate = LocalDateTime.of(2018,07, 13, 12, 00);
 
         Customer customer = new Customer("Lukas", "Goodman", "London SW1P 4DF, 238 King Street",
                 24589647);
@@ -21,6 +18,8 @@ public class OrderCreator {
         productList.add(new Product("ljwe6", "Plum", 1));
         productList.add(new Product("lj78c", "Apple", 3.5));
 
-        return new Order(providerName, dateOrder, customer, productList);
+        int numberOrder = 12;
+
+        return new Order(dateOrder, maxSentDate, customer, productList, numberOrder);
     }
 }
