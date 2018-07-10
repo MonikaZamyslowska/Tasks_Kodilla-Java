@@ -1,16 +1,16 @@
 package com.kodilla.good.patterns.fly.challenge;
 
+
 public class SearchFlightApp {
     public static void main(String[] args) {
         FlightsRetriever flightsRetriever = new FlightsRetriever();
         FlightsMap flightsMap = flightsRetriever.retrieve();
+        Airport airport = new Airport("Cracow");
 
-        DepartureAirport departureAirport = new DepartureAirport("Warsaw");
         SearchByDepartureCity searchByDepartureCity = new SearchByDepartureCity();
-        searchByDepartureCity.findFlight(flightsMap, departureAirport);
+        searchByDepartureCity.findFlight(flightsMap, airport);
 
-        ArrivalAirport arrivalAirport = new ArrivalAirport("Krakow");
         SearchByArrivalAirport searchByArrivalAirport = new SearchByArrivalAirport();
-        searchByArrivalAirport.findFlight(flightsMap, arrivalAirport);
+        searchByArrivalAirport.findFlight(flightsMap, airport);
     }
 }

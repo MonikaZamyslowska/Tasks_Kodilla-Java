@@ -1,14 +1,14 @@
 package com.kodilla.good.patterns.fly.challenge;
 
-
-import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class SearchByArrivalAirport {
 
-
-    public void findFlight(FlightsMap flightsMap, ArrivalAirport arrivalAirport) {
-        flightsMap.getFlight().keySet().stream()
-                .filter(t -> t.getDepartureCity().equals(arrivalAirport.getArrivalCity()))
-                .forEach(System.out::println);
+    public void findFlight (FlightsMap flightsMap, Airport airport) {
+        Map<Airport, Airport> result = flightsMap.getFlight().entrySet().stream()
+                .filter(map -> airport.equals(map.getValue()))
+                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+        System.out.println(result);
     }
 }
