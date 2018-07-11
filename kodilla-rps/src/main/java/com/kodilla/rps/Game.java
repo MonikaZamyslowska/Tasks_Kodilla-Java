@@ -3,9 +3,9 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class Game {
-    private static String SELECT = " selected ";
-    private static char YES = 'y';
-    private static char NO = 'n';
+    private final String SELECT = " selected ";
+    private final char YES = 'y';
+    private final char NO = 'n';
     private int computerScore = 0;
     private int playerScore = 0;
     private int numberOfGames = 0;
@@ -21,7 +21,6 @@ public class Game {
         Character theEnd = scanner.next().charAt(0);
         if (theEnd == NO) {
             playAgain();
-            end = false;
         }
         if (theEnd == YES) {
             end = true;
@@ -56,7 +55,6 @@ public class Game {
         }
         return again == YES;
     }
-
     public  void display(String name, Choice what) {
         if (what != Choice.INVALID) {
             switch (what) {
@@ -98,7 +96,6 @@ public class Game {
         return 0;
     }
 
-
     public void startGame() {
         Player player = new Player();
         Computer computer = new Computer();
@@ -135,7 +132,6 @@ public class Game {
                     System.out.println();
                 } else {
                     printStats();
-                    endGame();
                 }
             }
         }
