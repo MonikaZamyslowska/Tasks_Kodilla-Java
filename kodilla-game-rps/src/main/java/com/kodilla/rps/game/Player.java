@@ -3,7 +3,6 @@ package com.kodilla.rps.game;
 import java.util.Scanner;
 
 public class Player implements MakeAChoice {
-
     private String name;
     Scanner scanner = new Scanner(System.in);
 
@@ -28,5 +27,9 @@ public class Player implements MakeAChoice {
             default:
                 return Choice.INVALID;
         }
+    }
+
+    public String getName() {
+        return name;
     }
 }

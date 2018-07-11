@@ -3,7 +3,6 @@ package com.kodilla.rps.game;
 import java.util.Random;
 
 public class Computer implements MakeAChoice{
-
     Choice[] choices = {Choice.ROCK, Choice.PAPER, Choice.SCISSOR};
 
     @Override
