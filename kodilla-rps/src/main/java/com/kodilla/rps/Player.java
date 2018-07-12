@@ -24,39 +24,38 @@ public class Player {
         return number;
     }
 
-    public Game.Choice playerChoice() {
+    public Choice playerChoice() {
         char playerChoice;
         System.out.println("Select: \nROCK = 1 \nPAPER = 2 \nSCISSOR = 3");
         playerChoice = scanner.next().charAt(0);
 
         switch (playerChoice) {
             case '1':
-                return Game.Choice.ROCK;
+                return Choice.ROCK;
             case '2':
-                return Game.Choice.PAPER;
+                return Choice.PAPER;
             case '3':
-                return Game.Choice.SCISSOR;
+                return Choice.SCISSOR;
             default:
-                return Game.Choice.INVALID;
+                return Choice.INVALID;
         }
     }
 
-    public Game.Choice playerProcessChoice() {
+    public Choice playerProcessChoice() {
         System.out.println("START = 'a' \nEND GAME = 'x' \nRESET GAME = 'n'");
         char playerChoice = scanner.next().charAt(0);
 
         switch (playerChoice) {
             case 's':
-                return Game.Choice.START;
+                return Choice.START;
             case 'e':
-                return Game.Choice.END;
+                return Choice.END;
             case 'r':
-                return Game.Choice.RESET;
+                return Choice.RESET;
             default:
-                return Game.Choice.INVALID;
+                return Choice.INVALID;
         }
     }
-
 
     public String getName() {
         return name;
@@ -64,13 +63,5 @@ public class Player {
 
     public int getNumberOfRounds() {
         return numberOfRounds;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setNumberOfRounds(int numberOfRounds) {
-        this.numberOfRounds = numberOfRounds;
     }
 }

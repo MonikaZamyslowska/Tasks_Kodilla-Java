@@ -11,8 +11,10 @@ public class Game {
     private int numberOfGames = 0;
     private boolean end = false;
 
-    public enum Choice {
-        INVALID, START, ROCK, PAPER, SCISSOR, END, RESET
+    public void resetGamePoints() {
+        playerScore = 0;
+        computerScore = 0;
+        numberOfGames = 0;
     }
 
     public boolean endGame() {
@@ -35,9 +37,7 @@ public class Game {
         if (reset != YES && reset != NO) {
             playAgain();
         }
-        playerScore = 0;
-        computerScore = 0;
-        numberOfGames = 0;
+        resetGamePoints();
         System.out.println("Setting are reset...\n");
         return reset == YES;
     }
@@ -47,9 +47,7 @@ public class Game {
         System.out.println("Do you want play again? \n Yes = y \n NO = n");
         Character again = scanner.next().charAt(0);
         if (again == YES) {
-            playerScore = 0;
-            computerScore = 0;
-            numberOfGames = 0;
+            resetGamePoints();
             end = false;
             new Game();
             startGame();
@@ -96,6 +94,7 @@ public class Game {
         }
         return 0;
     }
+
     public void process(Choice what) {
 
         switch (what) {
