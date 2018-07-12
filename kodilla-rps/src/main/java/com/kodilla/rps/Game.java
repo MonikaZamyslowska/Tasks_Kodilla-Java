@@ -50,11 +50,13 @@ public class Game {
             playerScore = 0;
             computerScore = 0;
             numberOfGames = 0;
+            end = false;
             new Game();
             startGame();
         }
         return again == YES;
     }
+
     public  void display(String name, Choice what) {
         if (what != Choice.INVALID) {
             switch (what) {
@@ -70,6 +72,30 @@ public class Game {
         }
     }
 
+
+    public  int compere(Choice choicePlayer, Choice choiceComputer) {
+        if (choicePlayer.equals(choiceComputer)) {
+            System.out.println("Tie! \n");
+            return 0;
+        }
+        switch (choicePlayer) {
+            case ROCK:
+                System.out.println("Sorry you louse :( \n");
+                computerScore++;
+                return (choiceComputer == Choice.SCISSOR ? 1 : -1);
+            case PAPER:
+                System.out.println("You win!!! :)\n");
+                playerScore++;
+                return (choiceComputer == Choice.ROCK ? 1 : -1);
+            case SCISSOR:
+                System.out.println("You win!!! :)\n");
+                playerScore++;
+                return (choiceComputer == Choice.PAPER ? 1 : -1);
+            case INVALID:
+                break;
+        }
+        return 0;
+    }
     public void process(Choice what) {
 
         switch (what) {
@@ -83,19 +109,6 @@ public class Game {
         }
     }
 
-    public  int compere(Choice choicePlayer, Choice choiceComputer) {
-        if (choicePlayer.equals(choiceComputer)) return 0;
-        switch (choicePlayer) {
-            case ROCK:
-                return (choiceComputer == Choice.SCISSOR ? 1 : -1);
-            case PAPER:
-                return (choiceComputer == Choice.ROCK ? 1 : -1);
-            case SCISSOR:
-                return (choiceComputer == Choice.PAPER ? 1 : -1);
-        }
-        return 0;
-    }
-
     public void startGame() {
         Player player = new Player();
         Computer computer = new Computer();
@@ -105,35 +118,17 @@ public class Game {
                 display(player.getName(), playerChoice);
                 Choice computerChoice = computer.computerChoice();
                 display("COMPUTER", computerChoice);
-                int compareChoice = compere(playerChoice, computerChoice);
-                switch (compareChoice) {
-                    case -1: // computer wins
-                        System.out.println("Sorry you louse :( \n");
-                        computerScore++;
-                        break;
-                    case 0:
-                        System.out.println("Tie! \n");
-                        break;
-                    case 1:
-                        System.out.println("You win!!! :)\n");
-                        playerScore++;
-                        break;
-                    }
-                while (numberOfGames < player.getNumberOfRounds() - 1) {
-                    numberOfGames++;
-                    Choice playerProcessChoice = player.playerProcessChoice();
-                    if (playerProcessChoice != Choice.INVALID) {
-                        process(playerProcessChoice);
-                    } else {
-                        player.playerProcessChoice();
-                    }
+                compere(playerChoice, computerChoice);
                 }
-                if (playAgain()) {
-                    System.out.println();
-                } else {
-                    printStats();
-                }
+            if (numberOfGames < player.getNumberOfRounds() - 1) {
+                numberOfGames++;
+            } else {
+                end = true;
             }
+        }
+        if (!playAgain()) {
+            printStats();
+            process(player.playerProcessChoice());
         }
     }
 

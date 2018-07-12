@@ -42,9 +42,8 @@ public class Player {
     }
 
     public Game.Choice playerProcessChoice() {
-        char playerChoice;
         System.out.println("START = 'a' \nEND GAME = 'x' \nRESET GAME = 'n'");
-        playerChoice = scanner.next().charAt(0);
+        char playerChoice = scanner.next().charAt(0);
 
         switch (playerChoice) {
             case 's':
