@@ -1,5 +1,5 @@
 package com.kodilla.rps.game;
 
 public enum Choice {
-    INVALID, START, ROCK, PAPER, SCISSOR, END, RESET
+    INVALID, START, END, RESET, YES, NO, ROCK, PAPER, SCISSOR
 }

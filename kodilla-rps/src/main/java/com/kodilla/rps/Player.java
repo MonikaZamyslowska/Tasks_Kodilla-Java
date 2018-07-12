@@ -47,11 +47,11 @@ public class Player {
         playerChoice = scanner.next().charAt(0);
 
         switch (playerChoice) {
-            case 'a':
+            case 's':
                 return Game.Choice.START;
-            case 'x':
+            case 'e':
                 return Game.Choice.END;
-            case 'n':
+            case 'r':
                 return Game.Choice.RESET;
             default:
                 return Game.Choice.INVALID;

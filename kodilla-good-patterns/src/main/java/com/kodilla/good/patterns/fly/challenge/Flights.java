@@ -5,22 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Flights {
-    private List<Airport> flightsList = new ArrayList<>();
+    private List<Flight> flightsList = new ArrayList<>();
 
     public Flights() {
-        flightsList.add(new Airport("Wrocław", "Kraków", LocalDateTime.now().plusDays(5)));
-        flightsList.add(new Airport("Kraków", "Warszawa", LocalDateTime.now().plusDays(1)));
-        flightsList.add(new Airport("Gdańsk", "Wrocław", LocalDateTime.now().plusDays(2)));
-        flightsList.add(new Airport("Wrocław", "Łódź", LocalDateTime.now().plusDays(5)));
-        flightsList.add(new Airport("Poznań", "Warszawa", LocalDateTime.now().plusDays(2)));
-        flightsList.add(new Airport("Gdańsk", "Kraków", LocalDateTime.now().plusDays(1)));
-        flightsList.add(new Airport("Kraków", "Poznań", LocalDateTime.now().plusDays(1)));
-        flightsList.add(new Airport("Kraków", "Łódź", LocalDateTime.now().plusDays(3)));
-        flightsList.add(new Airport("Wrocław", "Warszawa", LocalDateTime.now().plusDays(2)));
-        flightsList.add(new Airport("Łódź", "Kraków", LocalDateTime.now().plusDays(3)));
+        flightsList.add(new Flight("Wrocław", "Kraków", LocalDateTime.now().plusDays(5)));
+        flightsList.add(new Flight("Kraków", "Warszawa", LocalDateTime.now().plusDays(1)));
+        flightsList.add(new Flight("Gdańsk", "Wrocław", LocalDateTime.now().plusDays(2)));
+        flightsList.add(new Flight("Wrocław", "Łódź", LocalDateTime.now().plusDays(5)));
+        flightsList.add(new Flight("Poznań", "Warszawa", LocalDateTime.now().plusDays(2)));
+        flightsList.add(new Flight("Gdańsk", "Kraków", LocalDateTime.now().plusDays(1)));
+        flightsList.add(new Flight("Kraków", "Poznań", LocalDateTime.now().plusDays(1)));
+        flightsList.add(new Flight("Kraków", "Łódź", LocalDateTime.now().plusDays(3)));
+        flightsList.add(new Flight("Wrocław", "Warszawa", LocalDateTime.now().plusDays(2)));
+        flightsList.add(new Flight("Łódź", "Kraków", LocalDateTime.now().plusDays(3)));
     }
 
-    public List<Airport> getFlightsList() {
+    public List<Flight> getFlightsList() {
         return new ArrayList<>(flightsList);
     }
 }

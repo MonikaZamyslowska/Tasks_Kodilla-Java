@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 
 public class FlightSearch {
 
-    private static final int NO_FLIGHTS = 0;
+    private static final int ZERO = 0;
     Flights flights = new Flights();
 
     public void findFlightFrom(String departureCity) {
-        List<Airport> flightsfrom = flights.getFlightsList().stream()
+        List<Flight> flightsfrom = flights.getFlightsList().stream()
                 .filter(flight -> flight.getDepartureAirport().equals(departureCity))
                 .collect(Collectors.toList());
-        if (flightsfrom.size() > NO_FLIGHTS) {
+        if (flightsfrom.size() > ZERO) {
             System.out.println("\nFlights available from: " + departureCity);
             flightsfrom.stream()
                     .forEach(System.out::println);
@@ -23,10 +23,10 @@ public class FlightSearch {
     }
 
     public void findFlightTo(String arrivalCity) {
-        List<Airport> flightsTo = flights.getFlightsList().stream()
+        List<Flight> flightsTo = flights.getFlightsList().stream()
                 .filter(flight -> flight.getArrivalAirport().equals(arrivalCity))
                 .collect(Collectors.toList());
-        if (flightsTo.size() > NO_FLIGHTS) {
+        if (flightsTo.size() > ZERO) {
             System.out.println("\nFlights available to: " + arrivalCity);
             flightsTo.forEach(System.out::println);
         } else {
@@ -35,12 +35,12 @@ public class FlightSearch {
     }
 
     public void findConnectingFlight(String departureCity, String transferCity, String arrivalCity) {
-        Optional<Airport> fromDepartureToTransfer = flights.getFlightsList().stream()
+        Optional<Flight> fromDepartureToTransfer = flights.getFlightsList().stream()
                 .filter(flight -> flight.getDepartureAirport().equals(departureCity))
                 .filter(flight -> flight.getArrivalAirport().equals(transferCity))
                 .findAny();
 
-        Optional<Airport> fromTransferToArrival = flights.getFlightsList().stream()
+        Optional<Flight> fromTransferToArrival = flights.getFlightsList().stream()
                 .filter(flights -> flights.getDepartureAirport().equals(transferCity))
                 .filter(flights -> flights.getArrivalAirport().equals(arrivalCity))
                 .findAny();
