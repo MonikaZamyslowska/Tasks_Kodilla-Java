@@ -48,6 +48,5 @@ public class BoardTestSuite {
         String getDoneList = doneList.getTasks().get(0);
         //Then
         System.out.println("Done list: " + getDoneList);
-
     }
 }

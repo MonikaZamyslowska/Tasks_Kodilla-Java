@@ -10,6 +10,7 @@ public class Game {
     private int playerScore = 0;
     private int numberOfGames = 0;
     private boolean end = false;
+    Scanner scanner = new Scanner(System.in);
 
     public void resetGamePoints() {
         playerScore = 0;
@@ -51,6 +52,8 @@ public class Game {
             end = false;
             new Game();
             startGame();
+        } else {
+            processChoice();
         }
         return again == YES;
     }
@@ -95,16 +98,38 @@ public class Game {
         return 0;
     }
 
-    public void process(Choice what) {
+    public Choice rpsChoice() {
+        char playerChoice;
+        System.out.println("Select: \nROCK = 1 \nPAPER = 2 \nSCISSOR = 3");
+        playerChoice = scanner.next().charAt(0);
 
-        switch (what) {
-            case START:
-                break;
-            case END:
+        switch (playerChoice) {
+            case '1':
+                return Choice.ROCK;
+            case '2':
+                return Choice.PAPER;
+            case '3':
+                return Choice.SCISSOR;
+            default:
+                return Choice.INVALID;
+        }
+    }
+
+    public Choice processChoice() {
+        System.out.println("START = 'a' \nEND GAME = 'x' \nRESET GAME = 'n'");
+        char choiceWhat = scanner.next().charAt(0);
+        switch (choiceWhat) {
+            case 's':
+                startGame();
+                return Choice.START;
+            case 'e':
                 endGame();
-                break;
-            case RESET:
+                return Choice.END;
+            case 'r':
                 resetGame();
+                return Choice.RESET;
+            default:
+                return Choice.INVALID;
         }
     }
 
@@ -112,7 +137,7 @@ public class Game {
         Player player = new Player();
         Computer computer = new Computer();
         while(!end ) {
-            Choice playerChoice = player.playerChoice();
+            Choice playerChoice = rpsChoice() ;
             if (playerChoice != Choice.INVALID) {
                 display(player.getName(), playerChoice);
                 Choice computerChoice = computer.computerChoice();
@@ -127,7 +152,7 @@ public class Game {
         }
         if (!playAgain()) {
             printStats();
-            process(player.playerProcessChoice());
+            processChoice();
         }
     }
 
