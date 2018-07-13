@@ -9,6 +9,7 @@ public class Player {
     public Player() {
         System.out.println("Please enter your name.");
         name = scanner.next();
+
     }
 
     public String getName() {

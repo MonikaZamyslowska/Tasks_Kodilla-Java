@@ -3,7 +3,7 @@ package com.kodilla.rps.game;
 import java.util.Random;
 
 public class Computer implements MakeAChoice{
-    String name;
+    private String name;
 
     public Computer() {
         name = "Computer";
@@ -17,4 +17,7 @@ public class Computer implements MakeAChoice{
         return computerChoices[choiceRandom];
     }
 
+    public String getName() {
+        return name;
+    }
 }
