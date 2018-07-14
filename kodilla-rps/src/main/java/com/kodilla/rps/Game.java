@@ -18,47 +18,7 @@ public class Game {
         numberOfGames = 0;
     }
 
-    public boolean endGame() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Are you sure want to end the game? \n YES = y \n NO = n");
-        Character theEnd = scanner.next().charAt(0);
-        if (theEnd == NO) {
-            playAgain();
-        }
-        if (theEnd == YES) {
-            end = true;
-        }
-        return end;
-    }
-
-    public boolean resetGame() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Are you sure want to reset Game, and play once again? \n YES = y \n NO = n");
-        Character reset = scanner.next().charAt(0);
-        if (reset != YES && reset != NO) {
-            playAgain();
-        }
-        resetGamePoints();
-        System.out.println("Setting are reset...\n");
-        return reset == YES;
-    }
-
-    public boolean playAgain() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Do you want play again? \n Yes = y \n NO = n");
-        Character again = scanner.next().charAt(0);
-        if (again == YES) {
-            resetGamePoints();
-            end = false;
-            new Game();
-            startGame();
-        } else {
-            processChoice();
-        }
-        return again == YES;
-    }
-
-    public  void display(String name, Choice what) {
+    public  void displayChoice(String name, Choice what) {
         if (what != Choice.INVALID) {
             switch (what) {
                 case ROCK:
@@ -73,8 +33,7 @@ public class Game {
         }
     }
 
-
-    public  int compere(Choice choicePlayer, Choice choiceComputer) {
+    public  int compareChoice(Choice choicePlayer, Choice choiceComputer) {
         if (choicePlayer.equals(choiceComputer)) {
             System.out.println("Tie! \n");
             return 0;
@@ -116,7 +75,7 @@ public class Game {
     }
 
     public Choice processChoice() {
-        System.out.println("START = 'a' \nEND GAME = 'x' \nRESET GAME = 'n'");
+        System.out.println("START = 's' \nEND GAME = 'e' \nRESET GAME = 'r'");
         char choiceWhat = scanner.next().charAt(0);
         switch (choiceWhat) {
             case 's':
@@ -133,27 +92,64 @@ public class Game {
         }
     }
 
+    public boolean endGame() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Are you sure want to end the game? \n YES = y \n NO = n");
+        Character theEnd = scanner.next().charAt(0);
+        if (theEnd == NO) {
+            playAgain();
+        }
+        if (theEnd == YES) {
+            end = true;
+        }
+        return end;
+    }
+
+    public boolean resetGame() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Are you sure want to reset Game, and play once again? \n YES = y \n NO = n");
+        Character reset = scanner.next().charAt(0);
+        if (reset != YES && reset != NO) {
+            playAgain();
+        }
+        resetGamePoints();
+        System.out.println("Setting are reset...\n");
+        return reset == YES;
+    }
+
+    public boolean playAgain() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Do you want play again? \n Yes = y \n NO = n");
+        Character again = scanner.next().charAt(0);
+        if (again == YES) {
+            resetGamePoints();
+            end = false;
+            new Game();
+            startGame();
+        } else {
+            processChoice();
+        }
+        return again == YES;
+    }
+
     public void startGame() {
         Player player = new Player();
         Computer computer = new Computer();
         while(!end ) {
             Choice playerChoice = rpsChoice() ;
             if (playerChoice != Choice.INVALID) {
-                display(player.getName(), playerChoice);
+                displayChoice(player.getName(), playerChoice);
                 Choice computerChoice = computer.computerChoice();
-                display("COMPUTER", computerChoice);
-                compere(playerChoice, computerChoice);
-                }
-            if (numberOfGames < player.getNumberOfRounds() - 1) {
+                displayChoice(computer.getComputerName(), computerChoice);
+                compareChoice(playerChoice, computerChoice);
                 numberOfGames++;
-            } else {
-                end = true;
+                if (numberOfGames > player.getNumberOfRounds() - 1) {
+                    printStats();
+                    end = true;
+                }
             }
         }
-        if (!playAgain()) {
-            printStats();
-            processChoice();
-        }
+        playAgain();
     }
 
 
@@ -171,5 +167,4 @@ public class Game {
             System.out.println("TIE! \n");
         }
     }
-
 }

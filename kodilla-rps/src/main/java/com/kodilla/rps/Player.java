@@ -24,39 +24,6 @@ public class Player {
         return number;
     }
 
-//    public Choice playerChoice() {
-//        char playerChoice;
-//        System.out.println("Select: \nROCK = 1 \nPAPER = 2 \nSCISSOR = 3");
-//        playerChoice = scanner.next().charAt(0);
-//
-//        switch (playerChoice) {
-//            case '1':
-//                return Choice.ROCK;
-//            case '2':
-//                return Choice.PAPER;
-//            case '3':
-//                return Choice.SCISSOR;
-//            default:
-//                return Choice.INVALID;
-//        }
-//    }
-//
-//    public Choice playerProcessChoice() {
-//        System.out.println("START = 'a' \nEND GAME = 'x' \nRESET GAME = 'n'");
-//        char playerChoice = scanner.next().charAt(0);
-//
-//        switch (playerChoice) {
-//            case 's':
-//                return Choice.START;
-//            case 'e':
-//                return Choice.END;
-//            case 'r':
-//                return Choice.RESET;
-//            default:
-//                return Choice.INVALID;
-//        }
-//    }
-
     public String getName() {
         return name;
     }
