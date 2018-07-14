@@ -1,5 +1,6 @@
 package com.kodilla.spring.portfolio;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import org.junit.runner.RunWith;
@@ -17,11 +18,11 @@ public class BoardTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
         Board board = context.getBean(Board.class);
         TaskList toDoList = board.getToDoList();
-        //When
         toDoList.tasks.add("Cook lunch!");
+        //When
         String getToDoList = toDoList.getTasks().get(0);
         //Then
-        System.out.println("To do list: " + getToDoList);
+        Assert.assertEquals(getToDoList, "Cook lunch!");
     }
 
     @Test
@@ -30,11 +31,11 @@ public class BoardTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
         Board board = context.getBean(Board.class);
         TaskList inProgressList = board.getInProgressList();
-        //When
         inProgressList.tasks.add("Go to the pool!");
+        //When
         String getInProgressList = inProgressList.getTasks().get(0);
         //Then
-        System.out.println("In progress List: " + getInProgressList);
+        Assert.assertEquals(getInProgressList, "Go to the pool!");
     }
 
     @Test
@@ -43,10 +44,10 @@ public class BoardTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
         Board board = context.getBean(Board.class);
         TaskList doneList = board.getDoneList();
-        //When
         doneList.tasks.add("Do homework.");
+        //When
         String getDoneList = doneList.getTasks().get(0);
         //Then
-        System.out.println("Done list: " + getDoneList);
+        Assert.assertEquals(getDoneList, "Do homework.");
     }
 }
