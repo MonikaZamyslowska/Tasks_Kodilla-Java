@@ -20,16 +20,7 @@ public class Game {
 
     public  void displayChoice(String name, Choice what) {
         if (what != Choice.INVALID) {
-            switch (what) {
-                case ROCK:
-                    System.out.println(name.toUpperCase() + SELECT + what);
-                    break;
-                case PAPER:
-                    System.out.println(name.toUpperCase() + SELECT + what);
-                    break;
-                case SCISSOR:
-                    System.out.println(name.toUpperCase() + SELECT + what);
-            }
+            System.out.println(name.toUpperCase() + SELECT + what);
         }
     }
 
@@ -151,7 +142,6 @@ public class Game {
         }
         playAgain();
     }
-
 
     public void printStats() {
         System.out.println("Player score: " + playerScore);
