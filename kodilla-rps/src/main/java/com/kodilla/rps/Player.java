@@ -1,5 +1,7 @@
 package com.kodilla.rps;
 
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Player {
@@ -14,14 +16,13 @@ public class Player {
 
     public String askName() {
         System.out.println("Please enter your name...");
-        String name = scanner.next();
+        name = scanner.next();
         return name;
     }
 
     public int askNumberOfRounds() {
         System.out.println("Hello " + getName().toUpperCase() + " :), How many rounds would you like to play?");
-        int number = scanner.nextInt();
-        return number;
+        return scanner.nextInt();
     }
 
     public String getName() {

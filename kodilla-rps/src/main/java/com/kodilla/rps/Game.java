@@ -10,7 +10,7 @@ public class Game {
     private int playerScore = 0;
     private int numberOfGames = 0;
     private boolean end = false;
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public void resetGamePoints() {
         playerScore = 0;
@@ -27,31 +27,30 @@ public class Game {
     public  int compareChoice(Choice choicePlayer, Choice choiceComputer) {
         if (choicePlayer.equals(choiceComputer)) {
             System.out.println("Tie! \n");
-            return 0;
-        }
-        switch (choicePlayer) {
-            case ROCK:
-                System.out.println("Sorry you louse :( \n");
-                computerScore++;
-                return (choiceComputer == Choice.SCISSOR ? 1 : -1);
-            case PAPER:
-                System.out.println("You win!!! :)\n");
-                playerScore++;
-                return (choiceComputer == Choice.ROCK ? 1 : -1);
-            case SCISSOR:
-                System.out.println("You win!!! :)\n");
-                playerScore++;
-                return (choiceComputer == Choice.PAPER ? 1 : -1);
-            case INVALID:
-                break;
+        } else {
+            switch (choicePlayer) {
+                case ROCK:
+                    System.out.println("Sorry you louse :( \n");
+                    computerScore++;
+                    return (choiceComputer == Choice.SCISSOR ? 1 : -1);
+                case PAPER:
+                    System.out.println("You win!!! :)\n");
+                    playerScore++;
+                    return (choiceComputer == Choice.ROCK ? 1 : -1);
+                case SCISSOR:
+                    System.out.println("You win!!! :)\n");
+                    playerScore++;
+                    return (choiceComputer == Choice.PAPER ? 1 : -1);
+                case INVALID:
+                    break;
+            }
         }
         return 0;
     }
 
     public Choice rpsChoice() {
-        char playerChoice;
         System.out.println("Select: \nROCK = 1 \nPAPER = 2 \nSCISSOR = 3");
-        playerChoice = scanner.next().charAt(0);
+        char playerChoice = scanner.next().charAt(0);
 
         switch (playerChoice) {
             case '1':
@@ -84,7 +83,6 @@ public class Game {
     }
 
     public boolean endGame() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Are you sure want to end the game? \n YES = y \n NO = n");
         Character theEnd = scanner.next().charAt(0);
         if (theEnd == NO) {
@@ -97,25 +95,22 @@ public class Game {
     }
 
     public boolean resetGame() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Are you sure want to reset Game, and play once again? \n YES = y \n NO = n");
-        Character reset = scanner.next().charAt(0);
-        if (reset != YES && reset != NO) {
+        char reset = scanner.next().charAt(0);
+        if (reset != YES && reset != NO || reset == NO) {
             playAgain();
         }
         resetGamePoints();
-        System.out.println("Setting are reset...\n");
+        end = false;
+        startGame();
         return reset == YES;
     }
 
     public boolean playAgain() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want play again? \n Yes = y \n NO = n");
-        Character again = scanner.next().charAt(0);
+        char again = scanner.next().charAt(0);
         if (again == YES) {
-            resetGamePoints();
             end = false;
-            new Game();
             startGame();
         } else {
             processChoice();
