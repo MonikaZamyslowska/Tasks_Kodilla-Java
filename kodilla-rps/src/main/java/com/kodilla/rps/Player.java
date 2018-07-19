@@ -6,6 +6,7 @@ public class Player {
     private String name;
     private int numberOfRounds;
     Scanner scanner = new Scanner(System.in);
+    String ASK_NUMBER = "Hello, how many rounds would you like to play?";
 
     public Player() {
         name = askName();
@@ -19,8 +20,8 @@ public class Player {
     }
 
     public int askNumberOfRounds() {
-        System.out.println("Hello " + getName().toUpperCase() + " :), How many rounds would you like to play?");
-        return scanner.nextInt();
+        int number = PlayerDialogs.getIntInput(ASK_NUMBER);
+        return number;
     }
 
     public String getName() {
