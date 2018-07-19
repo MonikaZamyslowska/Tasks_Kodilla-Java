@@ -25,6 +25,15 @@ public final class Library extends Prototype {
         return books;
     }
 
+    @Override
+    public String toString() {
+        String s = "Library [" + name + "]\n";
+        for (Book list : books) {
+            s = s + list.toString() + "\n";
+        }
+        return s;
+    }
+
     public Library shallowCopy() throws CloneNotSupportedException {
         return (Library)super.clone();
     }
@@ -32,7 +41,7 @@ public final class Library extends Prototype {
     public Library deepCopy() throws CloneNotSupportedException {
         Library cloneLibrary = (Library)super.clone();
         cloneLibrary.books = new HashSet<>();
-        for (Book book: cloneLibrary.getBooks()) {
+        for (Book book: books) {
             cloneLibrary.getBooks().add(book);
         }
         return cloneLibrary;
