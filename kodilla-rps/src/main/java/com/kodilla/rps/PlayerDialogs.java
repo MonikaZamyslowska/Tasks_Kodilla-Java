@@ -8,9 +8,9 @@ public class PlayerDialogs {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println(communique);
-            String s = scanner.nextLine();
+            String answer = scanner.nextLine();
             try {
-                int result = Integer.parseInt(s);
+                int result = Integer.parseInt(answer);
                 return result;
             } catch (Exception e) {
                 System.out.println("Wrong input. Try again.");

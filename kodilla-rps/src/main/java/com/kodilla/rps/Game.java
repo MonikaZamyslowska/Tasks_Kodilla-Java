@@ -6,6 +6,16 @@ public class Game {
     private final String SELECT = " selected ";
     private final char YES = 'y';
     private final char NO = 'n';
+    private final String WIN = "You WIN!!";
+    private final String LOUSE = "You LOUSE!!";
+    private final String TIE = "TIE!!";
+    private final String CHOICE = "Select: \nROCK = 1 \nPAPER = 2 \nSCISSOR = 3";
+    private final String END = "Are you sure want to end the game? \n YES = y \n NO = n";
+    private final String RESET = "Are you sure want to reset Game, and play once again? \n YES = y \n NO = n";
+    private final String PLAY_AGAIN = "Do you want play again? \n Yes = y \n NO = n";
+    private final String COMPUTER_SCORE = "COMPUTER SCORE: ";
+    private final String PLAYER_SCORE = "PLAYER SCORE: ";
+    private final String NUMBERS_ROUNDS = "NUMBER OF ROUNDS: ";
     private int computerScore = 0;
     private int playerScore = 0;
     private int numberOfGames = 0;
@@ -26,19 +36,19 @@ public class Game {
 
     public  int compareChoice(Choice choicePlayer, Choice choiceComputer) {
         if (choicePlayer.equals(choiceComputer)) {
-            System.out.println("Tie! \n");
+            System.out.println(TIE);
         } else {
             switch (choicePlayer) {
                 case ROCK:
-                    System.out.println("Sorry you louse :( \n");
+                    System.out.println(LOUSE);
                     computerScore++;
                     return (choiceComputer == Choice.SCISSOR ? 1 : -1);
                 case PAPER:
-                    System.out.println("You win!!! :)\n");
+                    System.out.println(WIN);
                     playerScore++;
                     return (choiceComputer == Choice.ROCK ? 1 : -1);
                 case SCISSOR:
-                    System.out.println("You win!!! :)\n");
+                    System.out.println(WIN);
                     playerScore++;
                     return (choiceComputer == Choice.PAPER ? 1 : -1);
                 case INVALID:
@@ -49,7 +59,7 @@ public class Game {
     }
 
     public Choice rpsChoice() {
-        System.out.println("Select: \nROCK = 1 \nPAPER = 2 \nSCISSOR = 3");
+        System.out.println();
         char playerChoice = scanner.next().charAt(0);
 
         switch (playerChoice) {
@@ -65,7 +75,7 @@ public class Game {
     }
 
     public Choice processChoice() {
-        System.out.println("START = 's' \nEND GAME = 'e' \nRESET GAME = 'r'");
+        System.out.println(CHOICE);
         char choiceWhat = scanner.next().charAt(0);
         switch (choiceWhat) {
             case 's':
@@ -83,7 +93,7 @@ public class Game {
     }
 
     public boolean endGame() {
-        System.out.println("Are you sure want to end the game? \n YES = y \n NO = n");
+        System.out.println(END);
         Character theEnd = scanner.next().charAt(0);
         if (theEnd == NO) {
             playAgain();
@@ -95,7 +105,7 @@ public class Game {
     }
 
     public boolean resetGame() {
-        System.out.println("Are you sure want to reset Game, and play once again? \n YES = y \n NO = n");
+        System.out.println(RESET);
         char reset = scanner.next().charAt(0);
         if (reset != YES && reset != NO || reset == NO) {
             playAgain();
@@ -107,7 +117,7 @@ public class Game {
     }
 
     public boolean playAgain() {
-        System.out.println("Do you want play again? \n Yes = y \n NO = n");
+        System.out.println(PLAY_AGAIN);
         char again = scanner.next().charAt(0);
         if (again == YES) {
             end = false;
@@ -139,17 +149,17 @@ public class Game {
     }
 
     public void printStats() {
-        System.out.println("Player score: " + playerScore);
-        System.out.println("Computer score: " + computerScore);
-        System.out.println("Number of rounds: " + numberOfGames);
+        System.out.println(PLAYER_SCORE + playerScore);
+        System.out.println(COMPUTER_SCORE + computerScore);
+        System.out.println(NUMBERS_ROUNDS + numberOfGames);
         if (playerScore > computerScore) {
-            System.out.println("You WIN!\n");
+            System.out.println(WIN);
         }
         if (computerScore > playerScore) {
-            System.out.println("Computer WON!\n");
+            System.out.println(LOUSE);
         }
         if (playerScore == computerScore) {
-            System.out.println("TIE! \n");
+            System.out.println(TIE);
         }
     }
 }
