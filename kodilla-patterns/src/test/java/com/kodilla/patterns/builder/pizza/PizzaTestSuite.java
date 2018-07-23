@@ -10,7 +10,7 @@ public class PizzaTestSuite {
         Pizza pizza = new Pizza.PizzaBuilder()
                 .ingredient("Onion")
                 .bottom("Thin")
-                .sauce("Spicy")
+                .sauce("barbeque")
                 .ingredient("Ham")
                 .ingredient("Mushrooms")
                 .build();
