@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.patterns.prototype.library.LibraryTestSuite" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-07-30T11:06:45" hostname="DESKTOP-7AUA26A" time="0.011">
+  <properties/>
+  <testcase name="testGetBooks" classname="com.kodilla.patterns.prototype.library.LibraryTestSuite" time="0.011"/>
+  <system-out><![CDATA[Library [Library 1]
+     Book [Secretaries and Directors Dilbert Michigan (1995-05-22)]
+     Book [Secrets of Java Ian Tenewitch (2017-12-12)]
+     Book [Secret life of programmers Steve Wolkowitz (2002-06-13)]
+
+Library [Library 2]
+     Book [Secretaries and Directors Dilbert Michigan (1995-05-22)]
+     Book [Secrets of Java Ian Tenewitch (2017-12-12)]
+     Book [Secret life of programmers Steve Wolkowitz (2002-06-13)]
+
+Library [Library 3]
+     Book [Secretaries and Directors Dilbert Michigan (1995-05-22)]
+     Book [Secrets of Java Ian Tenewitch (2017-12-12)]
+     Book [Secrets of Alamo John Smith (2018-10-02)]
+     Book [Secret life of programmers Steve Wolkowitz (2002-06-13)]
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

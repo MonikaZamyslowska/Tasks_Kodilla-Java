@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.patterns.builder.bigmac.BigMacBuilderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-07-30T11:06:45" hostname="DESKTOP-7AUA26A" time="0.003">
+  <properties/>
+  <testcase name="testNewBigMac" classname="com.kodilla.patterns.builder.bigmac.BigMacBuilderTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

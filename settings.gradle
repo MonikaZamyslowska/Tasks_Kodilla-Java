@@ -8,4 +8,7 @@ include 'kodilla-food-company'
 include 'kodilla-spring-intro'
 include 'kodilla-game-rps'
 include 'kodilla-patterns'
+include 'kodilla-jdbc'
+include 'kodilla-jdbc'
+include 'kodilla-jdbc'
 
