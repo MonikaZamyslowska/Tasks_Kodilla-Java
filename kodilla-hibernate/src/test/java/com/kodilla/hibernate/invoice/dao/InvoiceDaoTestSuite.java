@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @SpringBootTest
 public class InvoiceDaoTestSuite {
     @Autowired
-    private InvoiceDao invoiceDao;
+    InvoiceDao invoiceDao;
 
     @Test
     public void testInvoiceDaoSave() {

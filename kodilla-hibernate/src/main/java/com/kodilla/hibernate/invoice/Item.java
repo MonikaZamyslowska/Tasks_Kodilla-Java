@@ -1,13 +1,11 @@
 package com.kodilla.hibernate.invoice;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "ENTITY")
+@Table(name = "ITEMS")
 public class Item {
     private int id;
     private Product product;
@@ -57,7 +55,10 @@ public class Item {
         return value;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     @JoinColumn(name = "INVOICE_ID")
     public Invoice getInvoice() {
         return invoice;
