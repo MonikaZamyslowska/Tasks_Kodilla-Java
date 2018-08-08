@@ -4,7 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-
+@NamedNativeQuery(
+        name = "Company.retrieveCompanyByFirstThreeLetters",
+        query = "SELECT * FROM companies where LEFT(company_name, 3) = :FIRSTTHREELETTERS",
+        resultClass = Company.class
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
