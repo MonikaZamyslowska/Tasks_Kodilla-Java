@@ -1,5 +1,4 @@
 package com.kodilla.sudoku;
 
-public class SudokuBoard {
-
+public class PrintBoard {
 }

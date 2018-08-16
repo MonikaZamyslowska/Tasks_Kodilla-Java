@@ -3,22 +3,16 @@ package com.kodilla.sudoku;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SudokuElement {
+public class Element {
     private int value;
     public static int EMPTY = -1;
-    private List<Integer> elements;
 
-    public SudokuElement() {
+    public Element() {
         value = EMPTY;
-        elements = new ArrayList<>();
     }
 
     public int getValue() {
         return value;
-    }
-
-    public List<Integer> getElements() {
-        return elements;
     }
 
     public void setValue(int value) {
