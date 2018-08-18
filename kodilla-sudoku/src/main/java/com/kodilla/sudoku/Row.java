@@ -16,4 +16,8 @@ public class Row {
     public Element getElement(int elementIndex) {
         return rows.get(elementIndex -1);
     }
+
+    public List<Element> getRows() {
+        return rows;
+    }
 }
