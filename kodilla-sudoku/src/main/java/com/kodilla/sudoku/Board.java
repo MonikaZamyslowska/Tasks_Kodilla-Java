@@ -3,8 +3,7 @@ package com.kodilla.sudoku;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.kodilla.sudoku.Communications.BOARD_MAX_INDEX;
-import static com.kodilla.sudoku.Communications.BOARD_START_INDEX;
+import static com.kodilla.sudoku.Communications.*;
 import static com.kodilla.sudoku.Element.EMPTY;
 
 
@@ -56,10 +55,10 @@ public class Board extends Prototype{
         String s = " " + b + "\n";
         int x = 0;
         System.out.println("   1   2   3   4   5   6   7   8   9");
-        for (int row = BOARD_START_INDEX; row < BOARD_MAX_INDEX; row++) {
+        for (int row = MIN_VALUE; row < MAX_VALUE; row++) {
             x++;
             s+= x + " \u2551";
-            for (int col = BOARD_START_INDEX; col < BOARD_MAX_INDEX; col++) {
+            for (int col = MIN_VALUE; col < MAX_VALUE; col++) {
                 s+= " ";
                 int value = getValue(row, col);
                 s+= value == EMPTY ? " " : value;
@@ -70,7 +69,7 @@ public class Board extends Prototype{
                 }
             }
             s+= " " + "\n";
-            if (row < BOARD_MAX_INDEX && row % 3 != 0) {
+            if (row < MIN_VALUE && row % 3 != 0) {
                 s+= " " + a + "\n";
             } else {
                 s+= " " + b + "\n";
