@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-public class ShopService {
+public
+class ShopService {
     private final List<Order> orders = new ArrayList<>();
 
     @Autowired
