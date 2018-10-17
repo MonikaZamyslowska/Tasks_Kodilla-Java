@@ -49,9 +49,4 @@ public class SearchFacade {
         LOGGER.info(employees.size() + " employees were successfully found.");
         return employees;
     }
-
-
-
-
-
 }
