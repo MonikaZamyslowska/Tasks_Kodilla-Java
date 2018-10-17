@@ -2,8 +2,6 @@ package com.kodilla.patterns2.decorator.pizzaportal;
 
 import org.junit.Test;
 
-import java.math.BigDecimal;
-
 import static org.junit.Assert.*;
 
 public class PizzaPortalTestSuite {
@@ -12,9 +10,9 @@ public class PizzaPortalTestSuite {
         //Given
         PizzaOrder theOrder = new StandardPizzaOrder();
         //When
-        BigDecimal totalCost = theOrder.getCost();
+        double totalCost = theOrder.getCost();
         //Then
-        assertEquals(new BigDecimal(15), totalCost);
+        assertEquals(15, totalCost, 0.1);
     }
 
     @Test
@@ -33,9 +31,9 @@ public class PizzaPortalTestSuite {
         PizzaOrder theOrder = new StandardPizzaOrder();
         theOrder = new HawaiianPizzaOrderDecorator(theOrder);
         //When
-        BigDecimal totalCost = theOrder.getCost();
+        double totalCost = theOrder.getCost();
         //Then
-        assertEquals(new BigDecimal(20), totalCost);
+        assertEquals(20, totalCost, 0.1);
     }
 
     @Test
@@ -55,9 +53,9 @@ public class PizzaPortalTestSuite {
         PizzaOrder theOrder = new StandardPizzaOrder();
         theOrder = new VeganPizzaOrderDecorator(theOrder);
         //When
-        BigDecimal totalCost = theOrder.getCost();
+        double totalCost = theOrder.getCost();
         //Then
-        assertEquals(new BigDecimal(25), totalCost);
+        assertEquals(25, totalCost, 0.1);
     }
 
     @Test
@@ -78,9 +76,9 @@ public class PizzaPortalTestSuite {
         PizzaOrder theOrder = new StandardPizzaOrder();
         theOrder = new SpicyPizzaOrderDecorator(theOrder);
         //When
-        BigDecimal totalCost = theOrder.getCost();
+        double totalCost = theOrder.getCost();
         //Then
-        assertEquals(new BigDecimal(25), totalCost);
+        assertEquals(25, totalCost, 0.1);
     }
 
     @Test
@@ -102,9 +100,9 @@ public class PizzaPortalTestSuite {
         theOrder = new SpicyPizzaOrderDecorator(theOrder);
         theOrder = new DrinkOrderDecorator(theOrder);
         //When
-        BigDecimal totalCost = theOrder.getCost();
+        double totalCost = theOrder.getCost();
         //Then
-        assertEquals(new BigDecimal(30), totalCost);
+        assertEquals(30, totalCost, 0.1);
     }
 
     @Test

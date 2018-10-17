@@ -1,7 +1,5 @@
 package com.kodilla.patterns2.decorator.pizzaportal;
 
-import java.math.BigDecimal;
-
 public abstract class AbstractPizzaOrderDecorator implements PizzaOrder {
     private final PizzaOrder pizzaOrder;
 
@@ -10,7 +8,7 @@ public abstract class AbstractPizzaOrderDecorator implements PizzaOrder {
     }
 
     @Override
-    public BigDecimal getCost() {
+    public double getCost() {
         return pizzaOrder.getCost();
     }
 
