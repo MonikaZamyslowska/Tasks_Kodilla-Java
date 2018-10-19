@@ -5,20 +5,17 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-public class Homework implements Observable{
+public class TasksDeque implements Observable {
     private final List<Observer> observers;
-    private final Deque<String> tasksList;
-    private final String student;
+    private final Deque<StudentTask> taskDeque;
 
-    public Homework(String student) {
+    public TasksDeque() {
         observers = new ArrayList<>();
-        tasksList = new ArrayDeque<>();
-        this.student = student;
+        taskDeque = new ArrayDeque<>();
     }
 
-    public void addHomework (String moduleInfo) {
-        String homeworkBuilder = moduleInfo + " [" + student + "]";
-        tasksList.offerLast(homeworkBuilder);
+    public void addTaskToDeque(StudentTask studentTask) {
+        taskDeque.offerLast(studentTask);
         notifyObservers();
     }
 
@@ -39,11 +36,7 @@ public class Homework implements Observable{
         observers.remove(observer);
     }
 
-    public Deque<String> getModuleList() {
-        return tasksList;
-    }
-
-    public String getStudent() {
-        return student;
+    public Deque<StudentTask> getTaskDeque() {
+        return taskDeque;
     }
 }
