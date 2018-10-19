@@ -1,6 +1,6 @@
 package com.kodilla.patterns2.observer.forum;
 
-public class ForumUser implements  Observer {
+public class ForumUser implements Observer {
     private final String userName;
     private int updateCount;
 
