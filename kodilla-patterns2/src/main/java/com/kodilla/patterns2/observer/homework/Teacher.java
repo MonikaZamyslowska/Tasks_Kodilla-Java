@@ -13,7 +13,7 @@ public class Teacher implements Observer{
     public void update(TasksDeque tasksDeque) {
         System.out.println("Hello " + mentorName + ". You have a [" + tasksDeque.getTaskDeque().size() +
                 "] new homework on wall. \n" + "First homework in list is: " +
-                tasksDeque.getTaskDeque().peekLast().toString());
+                tasksDeque.getTaskDeque().peekFirst().toString());
         updateCount++;
     }
 
