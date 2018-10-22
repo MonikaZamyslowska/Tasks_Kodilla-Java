@@ -24,14 +24,12 @@ public class StudentTaskDequeTestSuite {
 
         TasksDeque dequeForJessie = new TasksDeque();
         TasksDeque dequeForWalter = new TasksDeque();
-
         dequeForWalter.registerObserver(walter);
         dequeForJessie.registerObserver(jessie);
         //When
         dequeForJessie.addTaskToDeque(aniaTask1);
         dequeForJessie.addTaskToDeque(aniaTask2);
         dequeForJessie.addTaskToDeque(olafTask1);
-
         dequeForWalter.addTaskToDeque(oliwiaTask1);
         //Then
         assertEquals(1, walter.getUpdateCount());
