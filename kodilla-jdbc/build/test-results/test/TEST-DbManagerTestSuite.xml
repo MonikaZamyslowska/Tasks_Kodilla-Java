@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DbManagerTestSuite" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-08-03T09:02:34" hostname="DESKTOP-7AUA26A" time="0.247">
+<testsuite name="DbManagerTestSuite" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-11-05T10:51:14" hostname="DESKTOP-7AUA26A" time="0.211">
   <properties/>
-  <testcase name="testSelectUsers" classname="DbManagerTestSuite" time="0.245"/>
+  <testcase name="testSelectUsers" classname="DbManagerTestSuite" time="0.208"/>
   <testcase name="testConnect" classname="DbManagerTestSuite" time="0.0"/>
-  <testcase name="testSelectUsersAndPosts" classname="DbManagerTestSuite" time="0.002"/>
-  <system-out><![CDATA[1, John, Smith
-2, Zachary, Lee
-3, Stephanie, Kovalsky
-4, Thomas, Landgren
-5, John, Thomson
-John, Smith, 2
-]]></system-out>
+  <testcase name="testSelectUsersAndPosts" classname="DbManagerTestSuite" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
