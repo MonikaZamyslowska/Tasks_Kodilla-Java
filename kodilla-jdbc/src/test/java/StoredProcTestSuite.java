@@ -36,7 +36,7 @@ public class StoredProcTestSuite {
         Statement statement = dbManager.getConnection().createStatement();
         statement.executeUpdate(sqlUpdate);
         //When
-        String sqlProcedureCall = "CALL UpdateBestseller()";
+        String sqlProcedureCall = "CALL UpdateBestsellers()";
         statement.execute(sqlProcedureCall);
         //Then
         String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER is null";
